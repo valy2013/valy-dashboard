@@ -1,0 +1,54 @@
+{
+  "tasks": [
+    {
+      "text": "test browser",
+      "priority": "alta",
+      "done": false
+    }
+  ],
+  "projects": [],
+  "savedAt": "2026-05-04T20:00:00Z",
+  "diana": {
+    "name": "Diana",
+    "emoji": "\ud83c\udfa8",
+    "model": "Qwen3 Coder (free)",
+    "status": "offline",
+    "role": "Dise\u00f1adora \u2014 PPT, HTML, dashboards"
+  },
+  "garmin": {
+    "last_sync": "2026-05-10",
+    "connected": true,
+    "activities_total": 20,
+    "days_with_data": 30
+  },
+  "compliance": {
+    "last_updated": "2026-05-05 23:37:21",
+    "total_commitments": 96,
+    "rcas_processed": 8,
+    "by_component": {
+      "aire": 28,
+      "residuos": 15,
+      "agua": 21,
+      "fauna": 7,
+      "social": 8,
+      "ruido": 1,
+      "otros": 15,
+      "flora": 1
+    },
+    "by_type": {
+      "construccion": 43,
+      "operacional": 19,
+      "monitoreo": 13,
+      "reporte": 13,
+      "cierre": 8
+    },
+    "by_authority": {
+      "SMA": 69,
+      "DGA": 11,
+      "SAG": 5,
+      "DIRECTEMAR": 3,
+      "Otro": 8
+    },
+    "status": "En progreso - Fase 2: Motor de consultas"
+  }
+}
