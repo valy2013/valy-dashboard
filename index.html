@@ -7,6 +7,7 @@
 <meta http-equiv="Pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="0"/>
 <title>Valy IA · Command Center</title>
+<script src="dashboard-data.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root{
@@ -434,6 +435,66 @@ body.light .foot{background:rgba(255,255,255,.55);}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:var(--muted2);border-radius:99px;}
 @media(max-width:720px){.app{grid-template-columns:1fr;}.sidebar{display:none;}}
+
+/* RAG Section */
+.rag-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:24px;}
+.rag-card{
+  background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);
+  padding:18px;box-shadow:var(--shadow);transition:.2s;
+}
+.rag-card:hover{transform:translateY(-3px);box-shadow:0 28px 72px rgba(0,0,0,.52);}
+.rag-card-header{display:flex;align-items:center;gap:9px;margin-bottom:11px;}
+.rag-card-icon{font-size:1.3rem;}
+.rag-card-title{font-size:.73rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+.rag-card-value{font-size:1.8rem;font-weight:800;color:var(--txt);margin-bottom:4px;}
+.rag-card-sub{font-size:.64rem;color:var(--muted);font-family:var(--mono);}
+.rag-sections{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;}
+@media(max-width:900px){.rag-sections{grid-template-columns:1fr;}}
+.rag-subsection{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);padding:18px;}
+.rag-subtitle{font-size:.87rem;font-weight:700;margin-bottom:13px;color:var(--muted);}
+.rag-list{display:flex;flex-direction:column;gap:8px;}
+.rag-item{
+  display:flex;align-items:center;gap:9px;padding:9px 12px;
+  background:var(--surf2);border-radius:9px;font-size:.81rem;
+  border:1px solid transparent;transition:.18s;
+}
+.rag-item:hover{border-color:var(--bdr);background:var(--surf3);}
+.rag-item-rank{
+  min-width:22px;height:22px;background:var(--blue);color:#fff;
+  border-radius:6px;font-size:.63rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+.rag-item-text{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.rag-item-count{
+  min-width:38px;height:20px;background:rgba(63,147,255,.12);
+  color:var(--blue);border-radius:5px;font-size:.63rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;padding:0 5px;
+}
+
+.rag-card-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);}
+.rag-table{width:100%;border-collapse:collapse;}
+.rag-table th{padding:9px 10px;font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);text-align:left;border-bottom:2px solid var(--bdr);}
+.rag-table td{padding:9px 10px;font-size:.78rem;border-bottom:1px solid var(--bdr);}
+.rag-table tbody tr:hover{background:rgba(63,147,255,.04);}
+
+/* COMMANDS */
+.cmd-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:14px;}
+@media(max-width:960px){.cmd-grid{grid-template-columns:1fr;}}
+.cmd-card{background:linear-gradient(145deg,var(--surf),var(--surf2));border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.13);}
+.cmd-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 16px;border-bottom:1px solid var(--bdr);}
+.cmd-title{font-size:.84rem;font-weight:800;display:flex;align-items:center;gap:8px;}
+.cmd-desc{font-size:.74rem;color:var(--muted);line-height:1.5;margin-top:4px;}
+.cmd-body{padding:14px 16px;display:flex;flex-direction:column;gap:10px;}
+.cmd-item{border:1px solid var(--bdr);border-radius:12px;background:rgba(63,147,255,.04);overflow:hidden;}
+.cmd-item-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-bottom:1px solid rgba(63,147,255,.08);}
+.cmd-label{font-size:.72rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);}
+.cmd-note{font-size:.72rem;color:var(--muted);line-height:1.45;padding:10px 12px 12px;}
+.cmd-code{display:block;width:100%;padding:12px;font-family:var(--mono);font-size:.74rem;line-height:1.55;color:var(--cyan);background:rgba(3,10,20,.84);white-space:pre-wrap;word-break:break-word;}
+body.light .cmd-code{background:#eef6ff;color:#005f8f;}
+.copy-btn{border:1px solid var(--bdr);background:rgba(63,147,255,.08);color:var(--txt);border-radius:10px;padding:6px 10px;font-size:.69rem;font-weight:700;cursor:pointer;transition:.18s;}
+.copy-btn:hover{border-color:var(--blue2);transform:translateY(-1px);}
+.cmd-inline{font-family:var(--mono);font-size:.74rem;color:var(--blue2);}
+
 </style>
 </head>
 <body>
@@ -443,7 +504,8 @@ body.light .foot{background:rgba(255,255,255,.55);}
   <button class="mnav-item active" data-section="overview" onclick="switchSection('overview')"><span class="mnav-icon">📊</span><span class="mnav-label">Overview</span></button>
   <button class="mnav-item" data-section="agents" onclick="switchSection('agents')"><span class="mnav-icon">🤖</span><span class="mnav-label">Agentes</span></button>
   <button class="mnav-item" data-section="infra" onclick="switchSection('infra')"><span class="mnav-icon">🖥️</span><span class="mnav-label">Infra</span></button>
-  <button class="mnav-item" data-section="api" onclick="switchSection('api')"><span class="mnav-icon">💰</span><span class="mnav-label">Costos</span></button>
+  <button class="mnav-item" data-section="comandos" onclick="switchSection('comandos')"><span class="mnav-icon">⌨️</span><span class="mnav-label">Comandos</span></button>
+  <button class="mnav-item" data-section="seia" onclick="switchSection('seia')"><span class="mnav-icon">📊</span><span class="mnav-label">SEIA</span></button>
   <button class="mnav-item" data-section="tasks" onclick="switchSection('tasks')"><span class="mnav-icon">✅</span><span class="mnav-label">Tareas</span></button>
   <button class="mnav-item" data-section="skills" onclick="switchSection('skills')"><span class="mnav-icon">🧩</span><span class="mnav-label">Skills</span></button>
   <button class="mnav-item" data-section="periodic" onclick="switchSection('periodic')"><span class="mnav-icon">⏰</span><span class="mnav-label">Periódicas</span></button>
@@ -459,7 +521,7 @@ body.light .foot{background:rgba(255,255,255,.55);}
     </div>
     <div>
       <div class="brand-name">Valy <span>IA</span></div>
-      <div class="brand-sub">Command Center · v2.1</div>
+      <div class="brand-sub">Command Center · v3.0</div>
     </div>
   </div>
   <nav class="nav">
@@ -472,8 +534,17 @@ body.light .foot{background:rgba(255,255,255,.55);}
     <div class="nav-item" onclick="nav('infra',this)">
       <span class="nav-icon">🖥️</span>Infraestructura
     </div>
+    <div class="nav-item" onclick="nav('comandos',this)">
+      <span class="nav-icon">⌨️</span>Comandos útiles<span class="nbadge info">CLI</span>
+    </div>
     <div class="nav-item" onclick="nav('tasks',this)">
       <span class="nav-icon">✅</span>Tareas<span class="nbadge" id="nb-tasks">—</span>
+    </div>
+    <div class="nav-item" onclick="nav('rag',this)">
+      <span class="nav-icon">🔍</span>Holmes RAG<span class="nbadge" id="nb-rag">—</span>
+    </div>
+    <div class="nav-item" onclick="nav('seia',this)">
+      <span class="nav-icon">📊</span>SEIA<span class="nbadge" id="nb-seia">—</span>
     </div>
     <div class="nav-item" onclick="nav('projects',this)">
       <span class="nav-icon">📁</span>Proyectos<span class="nbadge info">5</span>
@@ -487,8 +558,8 @@ body.light .foot{background:rgba(255,255,255,.55);}
   </nav>
   <div class="side-status">
     <div class="ss-row"><div class="dot"></div><div class="ss-label">Sistema Online</div></div>
-    <div class="ss-detail">pc.valy · 192.168.1.28</div>
-    <div class="ss-detail" style="margin-top:3px;">OpenClaw 2026.4.29 · a448042</div>
+    <div class="ss-detail">Mac Mini M2 · Servidor Local</div>
+    <div class="ss-detail" style="margin-top:3px;">Hermes Agent · 2026.06</div>
   </div>
   <div class="sidebar-foot">🐾 valy2013@proton.me</div>
 </aside>
@@ -514,15 +585,16 @@ body.light .foot{background:rgba(255,255,255,.55);}
         <div class="hero-deco"></div>
         <div class="hero-inner">
           <h2>🐾 Valy IA · Agente Personal Autónomo</h2>
-          <p>Ecosistema de inteligencia artificial local y cloud sobre <strong>pc.valy</strong> (HP 820 · Xubuntu 25.10).
-          Cinco asistentes — <strong>Valy</strong> (DeepSeek · principal), <strong>Pelusa</strong> (Groq · exploración),
-          <strong>Diana</strong> (Qwen3 · diseño), <strong>Maton.ai</strong> (Google Suite) — con integraciones Gmail, Drive, Calendar, Telegram y múltiples APIs gratuitas.</p>
+          <p>Ecosistema de inteligencia artificial sobre <strong>Mac Mini M2</strong> (Apple Silicon), auditado contra el sistema real el <strong>2026-07-04</strong>.
+          Cinco asistentes — <strong>Valy</strong> (claude-sonnet-4-6 · Anthropic · principal), <strong>Holmes</strong> (ollama-local/qwen2.5:7b · Local · RAG compliance),
+          <strong>Diana</strong> (claude-sonnet-4 · Anthropic · diseño visual), <strong>Pelusa</strong> (ollama-local/qwen2.5:7b · Local · sandbox) y
+          <strong>Doc</strong> (gpt-5.5 · OpenAI Codex · QAQC documental) — con Telegram operativo, Ollama local para embeddings y ChromaDB como base documental.</p>
           <div class="tags">
             <span class="tag t-green">✅ 5 Asistentes</span>
-            <span class="tag t-blue">🧠 DeepSeek V4 Flash</span>
-            <span class="tag t-cyan">⚡ Groq Llama-3.3-70b</span>
-            <span class="tag t-yellow">🎨 Qwen3 Coder</span>
-            <span class="tag t-purple">🔮 Gemini 2.5</span>
+            <span class="tag t-blue">🧠 claude-sonnet-4-6 / gpt-5.5</span>
+            <span class="tag t-cyan" id="dyn-chroma-tag">🔍 ChromaDB 0 chunks</span>
+            <span class="tag t-yellow">🎨 5 perfiles Hermes</span>
+            <span class="tag t-purple">🦙 Ollama local</span>
             <span class="tag t-orange">📱 Telegram @Valy_bot</span>
           </div>
         </div>
@@ -538,14 +610,14 @@ body.light .foot{background:rgba(255,255,255,.55);}
         <div class="kpi">
           <div class="kpi-icon">🔌</div>
           <div class="kpi-lbl">Integraciones</div>
-          <div class="kpi-val c-cyan">9</div>
-          <div class="kpi-hint">Gmail · Drive · Groq · Gemini +5</div>
+          <div class="kpi-val c-cyan">12</div>
+          <div class="kpi-hint">Gmail · Drive · Groq · NVIDIA NIM +9</div>
         </div>
         <div class="kpi">
           <div class="kpi-icon">💸</div>
           <div class="kpi-lbl">Balance DeepSeek</div>
-          <div class="kpi-val c-green">$6.04</div>
-          <div class="kpi-hint">USD · prepago disponible</div>
+          <div class="kpi-val c-green">$2.67</div>
+          <div class="kpi-hint">USD · saldo disponible vía API directa</div>
         </div>
         <div class="kpi">
           <div class="kpi-icon">✅</div>
@@ -562,13 +634,49 @@ body.light .foot{background:rgba(255,255,255,.55);}
             .ov-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
             @media(max-width:700px){.ov-grid{grid-template-columns:1fr;}}
             .ov-grid .ac{margin:0;}
-          </style>
+          
+/* RAG Section */
+.rag-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:24px;}
+.rag-card{
+  background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);
+  padding:18px;box-shadow:var(--shadow);transition:.2s;
+}
+.rag-card:hover{transform:translateY(-3px);box-shadow:0 28px 72px rgba(0,0,0,.52);}
+.rag-card-header{display:flex;align-items:center;gap:9px;margin-bottom:11px;}
+.rag-card-icon{font-size:1.3rem;}
+.rag-card-title{font-size:.73rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+.rag-card-value{font-size:1.8rem;font-weight:800;color:var(--txt);margin-bottom:4px;}
+.rag-card-sub{font-size:.64rem;color:var(--muted);font-family:var(--mono);}
+.rag-sections{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;}
+@media(max-width:900px){.rag-sections{grid-template-columns:1fr;}}
+.rag-subsection{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);padding:18px;}
+.rag-subtitle{font-size:.87rem;font-weight:700;margin-bottom:13px;color:var(--muted);}
+.rag-list{display:flex;flex-direction:column;gap:8px;}
+.rag-item{
+  display:flex;align-items:center;gap:9px;padding:9px 12px;
+  background:var(--surf2);border-radius:9px;font-size:.81rem;
+  border:1px solid transparent;transition:.18s;
+}
+.rag-item:hover{border-color:var(--bdr);background:var(--surf3);}
+.rag-item-rank{
+  min-width:22px;height:22px;background:var(--blue);color:#fff;
+  border-radius:6px;font-size:.63rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+.rag-item-text{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.rag-item-count{
+  min-width:38px;height:20px;background:rgba(63,147,255,.12);
+  color:var(--blue);border-radius:5px;font-size:.63rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;padding:0 5px;
+}
+
+</style>
           <div class="ov-grid">
             <div class="ac">
               <div class="a-ava">🐾</div>
               <div>
                 <div class="a-name">Valy</div>
-                <div class="a-model" style="font-size:.65rem;">deepseek/deepseek-v4-flash</div>
+                <div class="a-model" style="font-size:.65rem;">claude-sonnet-4-6 (Anthropic) <span class="badge b-ok" style="font-size:.55rem;">🧠 Anthropic</span><br><span style="font-size:.6rem;color:var(--muted);">↳ fallback: nvidia-build/deepseek-v4-flash → deepseek/deepseek-v4-flash</span></div>
                 <div class="a-status on"><div class="dot"></div>Online</div>
                 <div class="a-meta" style="font-size:.7rem;line-height:1.4;color:var(--txt);margin-top:4px;">
                   🧠 El cerebro del ecosistema. Coordina 5 agentes IA, gestiona memoria a largo plazo, automatiza tareas con cron y te responde por Telegram al instante.
@@ -579,10 +687,10 @@ body.light .foot{background:rgba(255,255,255,.55);}
               <div class="a-ava">🕵️</div>
               <div>
                 <div class="a-name">Holmes</div>
-                <div class="a-model" style="font-size:.65rem;">DeepSeek R1 · Ollama X13</div>
+                <div class="a-model" style="font-size:.65rem;">ollama-local/qwen2.5:7b <span class="badge b-ok" style="font-size:.55rem;">🦙 Local</span><br><span style="font-size:.6rem;color:var(--muted);">↳ fallback: ollama-local/llama3.2:3b → groq-cloud/llama-3.3-70b</span></div>
                 <div class="a-status on"><div class="dot"></div>Online</div>
                 <div class="a-meta" style="font-size:.7rem;line-height:1.4;color:var(--txt);margin-top:4px;">
-                  🕵️ Tu consultor ambiental 24/7. Analiza 28.700+ fragmentos de RCA, EIA y DIA con respuestas basadas en fuentes y citas textuales.
+                  🕵️ Tu consultor ambiental 24/7. Analiza <strong id="dyn-holmes-chunks-inline">108,575+</strong> fragmentos de RCA, EIA y DIA con respuestas basadas en fuentes y citas textuales.
                 </div>
               </div>
             </div>
@@ -590,7 +698,7 @@ body.light .foot{background:rgba(255,255,255,.55);}
               <div class="a-ava">🎨</div>
               <div>
                 <div class="a-name">Diana</div>
-                <div class="a-model" style="font-size:.65rem;">Qwen3 Coder · OpenRouter</div>
+                <div class="a-model" style="font-size:.65rem;">claude-sonnet-4 <span class="badge b-info" style="font-size:.55rem;">🧠 Anthropic</span><br><span style="font-size:.6rem;color:var(--muted);">↳ fallback: ollama-local/qwen2.5:14b → nvidia-build/glm-5.2</span></div>
                 <div class="a-status on"><div class="dot"></div>Online</div>
                 <div class="a-meta" style="font-size:.7rem;line-height:1.4;color:var(--txt);margin-top:4px;">
                   🎨 Diseñadora visual con estilo. Crea dashboards profesionales, landing pages y presentaciones Gamma que cautivan a primera vista.
@@ -601,10 +709,10 @@ body.light .foot{background:rgba(255,255,255,.55);}
               <div class="a-ava">🧭</div>
               <div>
                 <div class="a-name">Pelusa</div>
-                <div class="a-model" style="font-size:.65rem;">Groq Llama-3.3-70b</div>
+                <div class="a-model" style="font-size:.65rem;">ollama-local/qwen2.5:7b <span class="badge b-ok" style="font-size:.55rem;">🦙 Local</span><br><span style="font-size:.6rem;color:var(--muted);">↳ fallback: ollama-local/phi4:14b → groq-cloud/llama-3.3-70b</span></div>
                 <div class="a-status on"><div class="dot"></div>Online</div>
                 <div class="a-meta" style="font-size:.7rem;line-height:1.4;color:var(--txt);margin-top:4px;">
-                  🔬 Exploradora incansable. Prueba y compara decenas de modelos IA gratis para encontrar el mejor equilibrio entre velocidad, calidad y costo.
+                  🔬 Exploradora incansable. Sandbox para pruebas de modelos y validaciones rápidas. Ollama local verificado.
                 </div>
               </div>
             </div>
@@ -612,35 +720,26 @@ body.light .foot{background:rgba(255,255,255,.55);}
               <div class="a-ava">🧙</div>
               <div>
                 <div class="a-name">Doc</div>
-                <div class="a-model" style="font-size:.65rem;">deepseek-v4-flash · Cloud</div>
+                <div class="a-model" style="font-size:.65rem;">gpt-5.5 (QAQC) <span class="badge b-info" style="font-size:.55rem;">🧠 OpenAI Codex</span><br><span style="font-size:.6rem;color:var(--muted);">↳ fallback: nvidia-build/dsv4-pro → nvidia-build/llama-3.1-70b</span></div>
                 <div class="a-status on"><div class="dot"></div>Online</div>
                 <div class="a-meta" style="font-size:.7rem;line-height:1.4;color:var(--txt);margin-top:4px;">
-                  🧙 Científico experto. Analiza documentos complejos con rigor técnico. Extrae insights, genera reportes estructurados y respalda cada conclusión con fuentes verificables.
+                  🧙 Guardiana documental. Revisa expedientes, detecta inconsistencias y verifica trazabilidad con ojo crítico.
                 </div>
-              </div>
-            </div>
-            <div class="ac" style="border-color:rgba(255,255,255,.06);opacity:.5;cursor:default;">
-              <div class="a-ava" style="border-style:dashed;">🔧</div>
-              <div>
-                <div class="a-name">Maton.ai</div>
-                <div class="a-model" style="font-size:.65rem;">Google Suite Proxy</div>
-                <div class="a-status" style="color:var(--muted);"><div class="dot" style="background:var(--muted2);box-shadow:none;"></div>Middleware</div>
-                <div class="a-meta" style="font-size:.7rem;color:var(--muted2);">Proxy Google Suite · Gmail · Calendar · Drive · Docs</div>
               </div>
             </div>
           </div>
         </div>
         <div class="card">
-          <div class="ch"><div class="ct">🖥️ Estado pc.valy</div><span class="badge b-ok">Operativo</span></div>
+          <div class="ch"><div class="ct">🖥️ Estado Mac Mini M2</div><span class="badge b-ok">Operativo</span></div>
           <div class="cb">
             <div class="sys-row">
-              <div class="si"><span class="si-icon">💻</span><span class="si-lbl">Hardware</span><span class="si-val">HP 820 · Xubuntu 25.10</span><span class="badge b-ok">OK</span></div>
-              <div class="si"><span class="si-icon">🌐</span><span class="si-lbl">IP Fija</span><span class="si-val">192.168.1.28</span><span class="badge b-ok">OK</span></div>
-              <div class="si"><span class="si-icon">🔒</span><span class="si-lbl">SSH</span><span class="si-val">Puerto 22 · LAN</span><span class="badge b-warn">LAN only</span></div>
-              <div class="si"><span class="si-icon">📡</span><span class="si-lbl">AnyDesk</span><span class="si-val">ID: 1739327509</span><span class="badge b-ok">Global</span></div>
-              <div class="si"><span class="si-icon">🧠</span><span class="si-lbl">RAM</span><span class="si-val">3.7 GB disponible</span><span class="badge b-warn">Limitado</span></div>
-              <div class="si"><span class="si-icon">🔒</span><span class="si-lbl">Tailscale VPN</span><span class="si-val">Acceso externo</span><span class="badge b-pend">Pendiente</span></div>
-              <div class="si"><span class="si-icon">🦙</span><span class="si-lbl">Ollama Local</span><span class="si-val">llama3.2:3b</span><span class="badge b-pend">Pendiente</span></div>
+              <div class="si"><span class="si-icon">💻</span><span class="si-lbl">Hardware</span><span class="si-val">Mac Mini M2 · 16GB RAM · macOS 26.5.1</span><span class="badge b-ok">OK</span></div>
+              <div class="si"><span class="si-icon">🌐</span><span class="si-lbl">IP Fija</span><span class="si-val">192.168.1.23</span><span class="badge b-ok">OK</span></div>
+              <div class="si"><span class="si-icon">💾</span><span class="si-lbl">Memoria / swap</span><span class="si-val">16 GB · swap usado 0.00M</span><span class="badge b-ok">OK</span></div>
+              <div class="si"><span class="si-icon">🐍</span><span class="si-lbl">Python</span><span class="si-val">3.11.15</span><span class="badge b-ok">OK</span></div>
+              <div class="si"><span class="si-icon">🦙</span><span class="si-lbl">Ollama Local</span><span class="si-val">qwen2.5:14b · phi4:14b · llama3.2:3b · minicpm-v:8b · qwen2.5:7b · nomic-embed-text</span><span class="badge b-ok">OK</span></div>
+              <div class="si"><span class="si-icon">📚</span><span class="si-lbl">ChromaDB</span><span class="si-val" id="dyn-chroma-infra">108,575 chunks</span><span class="badge b-ok">OK</span></div>
+              <div class="si"><span class="si-icon">🔒</span><span class="si-lbl">Tailscale VPN</span><span class="si-val">Instalación app-only documentada</span><span class="badge b-info">No revalidado hoy</span></div>
             </div>
           </div>
         </div>
@@ -650,17 +749,23 @@ body.light .foot{background:rgba(255,255,255,.55);}
         <div class="ch"><div class="ct">🔌 Integraciones Activas</div></div>
         <div class="cb">
           <div class="int-grid">
-            <div class="int-item"><span class="int-icon">📧</span><div><div class="int-name">Gmail</div><div style="font-size:.67rem;color:var(--muted);">Envío y lectura</div></div><span class="int-ok">✓ OK</span></div>
-            <div class="int-item"><span class="int-icon">📅</span><div><div class="int-name">Google Calendar</div><div style="font-size:.67rem;color:var(--muted);">Gestión eventos</div></div><span class="int-ok">✓ OK</span></div>
-            <div class="int-item"><span class="int-icon">📁</span><div><div class="int-name">Google Drive</div><div style="font-size:.67rem;color:var(--muted);">Archivos y docs</div></div><span class="int-ok">✓ OK</span></div>
-            <div class="int-item"><span class="int-icon">📄</span><div><div class="int-name">Google Docs</div><div style="font-size:.67rem;color:var(--muted);">Documentos</div></div><span class="int-ok">✓ OK</span></div>
-            <div class="int-item"><span class="int-icon">✈️</span><div><div class="int-name">Telegram</div><div style="font-size:.67rem;color:var(--muted);">@Valy_bot · chat</div></div><span class="int-ok">✓ OK</span></div>
-            <div class="int-item"><span class="int-icon">⚡</span><div><div class="int-name">Groq API</div><div style="font-size:.67rem;color:var(--muted);">16 modelos · free</div></div><span class="int-ok">✓ OK</span></div>
-            <div class="int-item"><span class="int-icon">🔮</span><div><div class="int-name">Gemini API</div><div style="font-size:.67rem;color:var(--muted);">gemini-2.5-flash · free</div></div><span class="int-ok">✓ OK</span></div>
-            <div class="int-item"><span class="int-icon">🔀</span><div><div class="int-name">OpenRouter</div><div style="font-size:.67rem;color:var(--muted);">30+ modelos gratis</div></div><span class="int-ok">✓ OK</span></div>
-            <div class="int-item"><span class="int-icon">🧠</span><div><div class="int-name">DeepSeek</div><div style="font-size:.67rem;color:var(--muted);">V4 Flash · principal</div></div><span class="int-ok">✓ OK</span></div>
-            <div class="int-item"><span class="int-icon">🌙</span><div><div class="int-name">Kimi (Moonshot)</div><div style="font-size:.67rem;color:var(--muted);">K2 · API key</div></div><span class="int-ok">✓ OK</span></div>
-            <div class="int-item"><span class="int-icon">⌚</span><div><div class="int-name">Garmin</div><div style="font-size:.67rem;color:var(--muted);">Descent MK3i</div></div><span class="int-ok">✓ OK</span></div>
+            <div class="int-item"><span class="int-icon">📧</span><div><div class="int-name">Gmail</div><div style="font-size:.67rem;color:var(--muted);">Token presente</div></div><span class="int-ok">No verificado hoy</span></div>
+          <div class="int-item"><span class="int-icon">📅</span><div><div class="int-name">Google Calendar</div><div style="font-size:.67rem;color:var(--muted);">Integración declarada</div></div><span class="int-ok">No verificado hoy</span></div>
+          <div class="int-item"><span class="int-icon">📁</span><div><div class="int-name">Google Drive</div><div style="font-size:.67rem;color:var(--muted);">Backups 03:00</div></div><span class="int-ok">⚠ token revocado</span></div>
+          <div class="int-item"><span class="int-icon">📄</span><div><div class="int-name">Google Docs</div><div style="font-size:.67rem;color:var(--muted);">Sin prueba en esta revisión</div></div><span class="int-ok">Pendiente</span></div>
+          <div class="int-item"><span class="int-icon">💬</span><div><div class="int-name">Telegram</div><div style="font-size:.67rem;color:var(--muted);">Bot activo @Valy_bot</div></div><span class="int-ok">✓ OK</span></div>
+          <div class="int-item"><span class="int-icon">🌐</span><div><div class="int-name">Cloudflare Tunnel</div><div style="font-size:.67rem;color:var(--muted);">Acceso remoto</div></div><span class="int-ok">No verificado hoy</span></div>
+          <div class="int-item"><span class="int-icon">⚡</span><div><div class="int-name">Groq API</div><div style="font-size:.67rem;color:var(--muted);">Configuración histórica</div></div><span class="int-ok">No verificado hoy</span></div>
+          <div class="int-item"><span class="int-icon">🔮</span><div><div class="int-name">Gemini API</div><div style="font-size:.67rem;color:var(--muted);">Configuración histórica</div></div><span class="int-ok">No verificado hoy</span></div>
+          <div class="int-item"><span class="int-icon">🔀</span><div><div class="int-name">OpenRouter</div><div style="font-size:.67rem;color:var(--muted);">Token presente</div></div><span class="int-ok">No verificado hoy</span></div>
+          <div class="int-item"><span class="int-icon">🧠</span><div><div class="int-name">DeepSeek</div><div style="font-size:.67rem;color:var(--muted);">Uso histórico / fallback</div></div><span class="int-ok">No verificado hoy</span></div>
+          <div class="int-item"><span class="int-icon">🌙</span><div><div class="int-name">Kimi (Moonshot)</div><div style="font-size:.67rem;color:var(--muted);">API key registrada</div></div><span class="int-ok">No verificado hoy</span></div>
+          <div class="int-item"><span class="int-icon">⌚</span><div><div class="int-name">Garmin</div><div style="font-size:.67rem;color:var(--muted);">Integración listada</div></div><span class="int-ok">Sin prueba hoy</span></div>
+          <div class="int-item"><span class="int-icon">☁️</span><div><div class="int-name">Ollama local</div><div style="font-size:.67rem;color:var(--muted);">localhost:11434 · embeddings</div></div><span class="int-ok">✓ OK</span></div>
+          <div class="int-item"><span class="int-icon">🧠</span><div><div class="int-name">z.ai</div><div style="font-size:.67rem;color:var(--muted);">API directa, sin saldo</div></div><span class="int-ok" style="background:rgba(255,140,66,.1);color:var(--orange);border:1px solid rgba(255,140,66,.2);">Pendiente</span></div>
+          <div class="int-item"><span class="int-icon">🟢</span><div><div class="int-name">NVIDIA NIM</div><div style="font-size:.67rem;color:var(--muted);">80+ modelos gratis</div></div><span class="int-ok" style="background:rgba(34,208,138,.1);color:var(--green);border:1px solid rgba(34,208,138,.2);">✓ OK</span></div>
+          <div class="int-item"><span class="int-icon">☁️</span><div><div class="int-name">Ollama Cloud</div><div style="font-size:.67rem;color:var(--muted);">Modelos cloud</div></div><span class="int-ok" style="background:rgba(249,199,91,.1);color:var(--yellow);border:1px solid rgba(249,199,91,.2);">Pendiente</span></div>
+          <div class="int-item"><span class="int-icon">🔑</span><div><div class="int-name">Keychain / .secrets</div><div style="font-size:.67rem;color:var(--muted);">Secrets management</div></div><span class="int-ok">Documentado</span></div>
           </div>
         </div>
       </div>
@@ -750,7 +855,43 @@ body.light .foot{background:rgba(255,255,255,.55);}
         .v3-card.v3-pending:hover{opacity:.75;transform:none;box-shadow:none;}
         .v3-card.v3-pending .v3-body{padding:24px;justify-content:center;align-items:center;}
         @media(max-width:820px){.v3-grid{grid-template-columns:1fr;height:auto;}.v3-card{min-height:200px;}}
-      </style>
+      
+/* RAG Section */
+.rag-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:24px;}
+.rag-card{
+  background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);
+  padding:18px;box-shadow:var(--shadow);transition:.2s;
+}
+.rag-card:hover{transform:translateY(-3px);box-shadow:0 28px 72px rgba(0,0,0,.52);}
+.rag-card-header{display:flex;align-items:center;gap:9px;margin-bottom:11px;}
+.rag-card-icon{font-size:1.3rem;}
+.rag-card-title{font-size:.73rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+.rag-card-value{font-size:1.8rem;font-weight:800;color:var(--txt);margin-bottom:4px;}
+.rag-card-sub{font-size:.64rem;color:var(--muted);font-family:var(--mono);}
+.rag-sections{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;}
+@media(max-width:900px){.rag-sections{grid-template-columns:1fr;}}
+.rag-subsection{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);padding:18px;}
+.rag-subtitle{font-size:.87rem;font-weight:700;margin-bottom:13px;color:var(--muted);}
+.rag-list{display:flex;flex-direction:column;gap:8px;}
+.rag-item{
+  display:flex;align-items:center;gap:9px;padding:9px 12px;
+  background:var(--surf2);border-radius:9px;font-size:.81rem;
+  border:1px solid transparent;transition:.18s;
+}
+.rag-item:hover{border-color:var(--bdr);background:var(--surf3);}
+.rag-item-rank{
+  min-width:22px;height:22px;background:var(--blue);color:#fff;
+  border-radius:6px;font-size:.63rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+.rag-item-text{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.rag-item-count{
+  min-width:38px;height:20px;background:rgba(63,147,255,.12);
+  color:var(--blue);border-radius:5px;font-size:.63rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;padding:0 5px;
+}
+
+</style>
 
       <div class="v3-grid">
 
@@ -766,7 +907,7 @@ body.light .foot{background:rgba(255,255,255,.55);}
                   <div class="v3-role">Orquestador · Telegram</div>
                 </div>
               </div>
-              <div class="v3-model"><span class="v3-model-name">qwen3.5:397b</span><span class="v3-provider cloud">☁️ Cloud</span></div>
+              <div class="v3-model"><span class="v3-model-name">claude-sonnet-4-6</span><span class="v3-provider cloud" style="color:var(--purple);border-color:rgba(167,139,250,.25);background:rgba(167,139,250,.08);">🧠 Anthropic</span><span style="font-size:.52rem;color:var(--muted);margin-left:auto;white-space:nowrap;">↳ nvidia-build/dsv4-flash → deepseek/dsv4-flash</span></div>
               <div class="v3-metrics">
                 <div class="v3-m"><div class="v3-m-lbl">Uptime</div><div class="v3-m-val c-green">99.9%</div></div>
                 <div class="v3-m"><div class="v3-m-lbl">Tokens</div><div class="v3-m-val c-blue">1.2M</div></div>
@@ -792,11 +933,11 @@ body.light .foot{background:rgba(255,255,255,.55);}
                   <div class="v3-role">Compliance Ambiental · RAG</div>
                 </div>
               </div>
-              <div class="v3-model"><span class="v3-model-name">kimi-k2.6</span><span class="v3-provider cloud">☁️ Cloud</span></div>
+              <div class="v3-model"><span class="v3-model-name">ollama-local/qwen2.5:7b · <span id="dyn-holmes-chunks-v3">108,575</span> chunks</span><span class="v3-provider local" style="color:var(--green);border-color:rgba(34,208,138,.25);background:rgba(34,208,138,.08);">🦙 Local</span><span style="font-size:.52rem;color:var(--muted);margin-left:auto;white-space:nowrap;">↳ llama3.2:3b → groq/llama-3.3-70b</span></div>
               <div class="v3-metrics">
-                <div class="v3-m"><div class="v3-m-lbl">Chunks</div><div class="v3-m-val c-green">28.7K</div></div>
-                <div class="v3-m"><div class="v3-m-lbl">Compromisos</div><div class="v3-m-val c-blue">96</div></div>
-                <div class="v3-m"><div class="v3-m-lbl">Documentos</div><div class="v3-m-val c-purple">356</div></div>
+                <div class="v3-m"><div class="v3-m-lbl">Chunks</div><div class="v3-m-val c-green" id="dyn-holmes-chunks-val">108,575</div></div>
+                <div class="v3-m"><div class="v3-m-lbl">RCAs</div><div class="v3-m-val c-blue">44</div></div>
+                <div class="v3-m"><div class="v3-m-lbl">Documentos</div><div class="v3-m-val c-purple">590</div></div>
               </div>
             </div>
             <div class="v3-foot">
@@ -818,7 +959,7 @@ body.light .foot{background:rgba(255,255,255,.55);}
                   <div class="v3-role">Diseño · Frontend</div>
                 </div>
               </div>
-              <div class="v3-model"><span class="v3-model-name">qwen3.5:397b</span><span class="v3-provider cloud">☁️ Cloud</span></div>
+              <div class="v3-model"><span class="v3-model-name">claude-sonnet-4</span><span class="v3-provider cloud" style="color:var(--purple);border-color:rgba(167,139,250,.25);background:rgba(167,139,250,.08);">🧠 Anthropic</span><span style="font-size:.52rem;color:var(--muted);margin-left:auto;white-space:nowrap;">↳ ollama-local/qwen2.5:14b → nvidia-build/glm-5.2</span></div>
               <div class="v3-metrics">
                 <div class="v3-m"><div class="v3-m-lbl">Dashboards</div><div class="v3-m-val c-green">3</div></div>
                 <div class="v3-m"><div class="v3-m-lbl">Assets</div><div class="v3-m-val c-blue">12</div></div>
@@ -844,11 +985,11 @@ body.light .foot{background:rgba(255,255,255,.55);}
                   <div class="v3-role">Exploración · Modelos</div>
                 </div>
               </div>
-              <div class="v3-model"><span class="v3-model-name">gemma4:31b</span><span class="v3-provider cloud">☁️ Cloud</span></div>
+              <div class="v3-model"><span class="v3-model-name">ollama-local/qwen2.5:7b</span><span class="v3-provider local" style="color:var(--green);border-color:rgba(34,208,138,.25);background:rgba(34,208,138,.08);">🦙 Local</span><span style="font-size:.52rem;color:var(--muted);margin-left:auto;white-space:nowrap;">↳ phi4:14b → groq/llama-3.3-70b</span></div>
               <div class="v3-metrics">
-                <div class="v3-m"><div class="v3-m-lbl">Modelos</div><div class="v3-m-val c-green">8</div></div>
-                <div class="v3-m"><div class="v3-m-lbl">Fallbacks</div><div class="v3-m-val c-yellow">3</div></div>
-                <div class="v3-m"><div class="v3-m-lbl">Costo</div><div class="v3-m-val c-green">Gratis</div></div>
+                <div class="v3-m"><div class="v3-m-lbl">Modelos locales</div><div class="v3-m-val c-green">2</div></div>
+                <div class="v3-m"><div class="v3-m-lbl">Fallbacks</div><div class="v3-m-val c-yellow">1</div></div>
+                <div class="v3-m"><div class="v3-m-lbl">Locales</div><div class="v3-m-val c-purple">2</div></div>
               </div>
             </div>
             <div class="v3-foot">
@@ -867,19 +1008,19 @@ body.light .foot{background:rgba(255,255,255,.55);}
                 <div class="v3-avatar" style="background:rgba(255,140,66,.12);border-color:rgba(255,140,66,.3);box-shadow:0 0 20px rgba(255,140,66,.25);">🧙<div class="v3-dot"></div></div>
                 <div class="v3-info">
                   <div class="v3-name">Doc</div>
-                  <div class="v3-role">Documentos · PDFs</div>
+                  <div class="v3-role">QAQC · Documentos</div>
                 </div>
               </div>
-              <div class="v3-model"><span class="v3-model-name">deepseek-v4-flash</span><span class="v3-provider cloud">☁️ Cloud</span></div>
+              <div class="v3-model"><span class="v3-model-name">gpt-5.5</span><span class="v3-provider cloud" style="color:var(--blue2);border-color:rgba(63,147,255,.25);background:rgba(63,147,255,.08);">🧠 OpenAI Codex</span><span style="font-size:.52rem;color:var(--muted);margin-left:auto;white-space:nowrap;">↳ nvidia-build/dsv4-pro → nvidia-build/llama-3.1-70b</span></div>
               <div class="v3-metrics">
-                <div class="v3-m"><div class="v3-m-lbl">Chunks</div><div class="v3-m-val c-green">2.1K</div></div>
-                <div class="v3-m"><div class="v3-m-lbl">Reportes</div><div class="v3-m-val c-blue">47</div></div>
-                <div class="v3-m"><div class="v3-m-lbl">PDFs</div><div class="v3-m-val c-purple">356</div></div>
+                <div class="v3-m"><div class="v3-m-lbl">Chunks</div><div class="v3-m-val c-green">0</div></div>
+                <div class="v3-m"><div class="v3-m-lbl">RCAs</div><div class="v3-m-val c-blue">44</div></div>
+                <div class="v3-m"><div class="v3-m-lbl">PDFs / docs</div><div class="v3-m-val c-purple">590</div></div>
               </div>
             </div>
             <div class="v3-foot">
               <div class="v3-status"><div class="dot"></div>Online</div>
-              <span class="v3-badge" style="color:#ff8c42;border-color:rgba(255,140,66,.3);background:rgba(255,140,66,.1);">Doc</span>
+              <span class="v3-badge" style="color:#ff8c42;border-color:rgba(255,140,66,.3);background:rgba(255,140,66,.1);">QAQC</span>
             </div>
           </div>
         </div>
@@ -902,18 +1043,17 @@ body.light .foot{background:rgba(255,255,255,.55);}
     <div class="section" id="s-infra">
       <div class="g2 mb14" style="grid-template-columns:1fr;">
         <div class="card">
-          <div class="ch"><div class="ct">💻 pc.valy · Servidor Principal</div><span class="badge b-ok">Operativo</span></div>
+          <div class="ch"><div class="ct">💻 Mac Mini M2 · Servidor Principal</div><span class="badge b-ok">Operativo</span></div>
           <div class="cb">
             <table class="st">
-              <tr><td>Modelo</td><td>HP Laptop 820</td></tr>
-              <tr><td>SO</td><td>Xubuntu 25.10</td></tr>
-              <tr><td>IP Fija</td><td>192.168.1.28 (NetworkManager)</td></tr>
-              <tr><td>RAM</td><td>3.7 GB · Disco 465 GB</td></tr>
-              <tr><td>Boot Mode</td><td>UEFI Hybrid (With CSM) ⚠️</td></tr>
+              <tr><td>Modelo</td><td>Mac Mini M2 (Apple Silicon)</td></tr>
+              <tr><td>SO</td><td>macOS 26.5.1</td></tr>
+              <tr><td>IP Fija</td><td>192.168.1.23</td></tr>
+              <tr><td>RAM</td><td>16 GB · swap usado 0.00M</td></tr>
+              <tr><td>Hermes Agent</td><td>Perfil default · claude-sonnet-4-6</td></tr>
               <tr><td>SSH</td><td>Puerto 22 · solo LAN</td></tr>
-              <tr><td>AnyDesk</td><td>ID 1739327509 · acceso global</td></tr>
-              <tr><td>OpenClaw</td><td>v2026.4.29 (a448042)</td></tr>
-              <tr><td>EFI timeout</td><td>1s (efibootmgr)</td></tr>
+              <tr><td>Ollama Local</td><td>qwen2.5:14b · phi4:14b · llama3.2:3b · minicpm-v:8b · qwen2.5:7b · nomic-embed-text</td></tr>
+              <tr><td>ChromaDB</td><td id="dyn-chroma-infra-storage">0 chunks documentales</td></tr>
             </table>
           </div>
         </div>
@@ -931,34 +1071,221 @@ body.light .foot{background:rgba(255,255,255,.55);}
             </table>
           </div>
         </div>
-      </div>
-      <div class="card mb14">
-        <div class="ch"><div class="ct">🛠️ Pendientes de Instalación</div></div>
-        <div class="cb">
-          <div class="sys-row">
-            <div class="si"><span class="si-icon">🦙</span><span class="si-lbl">Ollama</span><span class="si-val">llama3.2:3b · modelo local</span><span class="badge b-pend">Pendiente</span></div>
-            <div class="si"><span class="si-icon">🔒</span><span class="si-lbl">Tailscale VPN</span><span class="si-val">Acceso externo · pc.valy + ZBook + iPad</span><span class="badge b-pend">Pendiente</span></div>
-            <div class="si"><span class="si-icon">💻</span><span class="si-lbl">OpenCode.ai</span><span class="si-val">Agente de coding IA</span><span class="badge b-pend">Pendiente</span></div>
-            <div class="si"><span class="si-icon">📦</span><span class="si-lbl">Node.js 24</span><span class="si-val">Prerrequisito Claude Code</span><span class="badge b-pend">Pendiente</span></div>
+        <div class="card">
+          <div class="ch"><div class="ct">🖥️ pc.valy · Servidor Secundario</div><span class="badge b-warn">En espera</span></div>
+          <div class="cb">
+            <table class="st">
+              <tr><td>Nombre</td><td>pc.valy</td></tr>
+              <tr><td>IP</td><td>192.168.1.28</td></tr>
+              <tr><td>Rol</td><td>Respaldo pasivo · pendiente de apagado</td></tr>
+              <tr><td>Estado</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:7px;height:7px;border-radius:50%;background:var(--yellow);box-shadow:0 0 9px var(--yellow);display:inline-block;"></span> 🟡 Standby</span></td></tr>
+              <tr><td>Uso</td><td>AmbientBot backend pendiente de migrar + respaldo</td></tr>
+              <tr><td>RAM Disponible</td><td>No auditada hoy</td></tr>
+              <tr><td>Red</td><td>LAN 192.168.1.x</td></tr>
+            </table>
           </div>
         </div>
       </div>
       <div class="card mb14">
-        <div class="ch"><div class="ct">⚠️ Advertencias Críticas</div></div>
+        <div class="ch"><div class="ct">🛠️ Pendientes de Instalación / Configuración</div></div>
         <div class="cb">
           <div class="sys-row">
-            <div class="si" style="border-color:rgba(255,85,117,.25);background:rgba(255,85,117,.04);">
-              <span class="si-icon">🚫</span><span class="si-lbl" style="color:var(--red);">fbx64.efi</span>
-              <span class="si-val" style="color:var(--txt);">Renombrado a .bak · NO restaurar (loop de arranque)</span>
-            </div>
-            <div class="si" style="border-color:rgba(255,85,117,.25);background:rgba(255,85,117,.04);">
-              <span class="si-icon">🚫</span><span class="si-lbl" style="color:var(--red);">BIOS Boot Mode</span>
-              <span class="si-val" style="color:var(--txt);">UEFI Hybrid (With CSM) · NO cambiar</span>
-            </div>
-            <div class="si" style="border-color:rgba(255,85,117,.25);background:rgba(255,85,117,.04);">
-              <span class="si-icon">🚫</span><span class="si-lbl" style="color:var(--red);">OpenClaw</span>
-              <span class="si-val" style="color:var(--txt);">Siempre iniciar dentro de tmux para persistir sesión</span>
-            </div>
+            <div class="si"><span class="si-icon">🔒</span><span class="si-lbl">Tailscale VPN</span><span class="si-val">Acceso externo · Mac Mini + iPad</span><span class="badge b-pend">Pendiente</span></div>
+            <div class="si"><span class="si-icon">💻</span><span class="si-lbl">OpenCode.ai</span><span class="si-val">Agente de coding IA</span><span class="badge b-pend">Pendiente</span></div>
+            <div class="si"><span class="si-icon">📦</span><span class="si-lbl">Node.js</span><span class="si-val">Prerrequisito tools npm</span><span class="badge b-pend">Pendiente</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════ SEIA SEGUIMIENTO ══════ -->
+    <div class="section" id="s-seia">
+      <div class="section-header">
+        <h2 class="section-title">📊 Seguimiento SEIA — Descargas RCA</h2>
+        <div class="section-actions">
+          <button class="btn" onclick="refreshSEIA()">🔄 Actualizar</button>
+        </div>
+      </div>
+
+      <!-- KPIs con badges -->
+      <div class="rag-sections" style="margin-bottom:20px;">
+        <div class="rag-subsection" style="position:relative;">
+          <span style="position:absolute;top:10px;right:12px;font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:99px;background:rgba(34,208,138,.1);color:var(--green);border:1px solid rgba(34,208,138,.22);">🟢 36</span>
+          <div class="rag-card-label">Total RCAs en Matriz</div>
+          <div class="rag-card-value c-blue">36</div>
+          <div class="rag-card-sub">Priorizadas para seguimiento Minera Centinela</div>
+        </div>
+        <div class="rag-subsection" style="position:relative;">
+          <span style="position:absolute;top:10px;right:12px;font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:99px;background:rgba(63,147,255,.1);color:var(--blue2);border:1px solid rgba(63,147,255,.2);">📦 47</span>
+          <div class="rag-card-label">RCAs Procesadas</div>
+          <div class="rag-card-value c-green">47</div>
+          <div class="rag-card-sub">Archivos JSON en repositorio SRCA</div>
+        </div>
+        <div class="rag-subsection" style="position:relative;">
+          <span style="position:absolute;top:10px;right:12px;font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:99px;background:rgba(56,232,255,.1);color:var(--cyan);border:1px solid rgba(56,232,255,.2);">💾 4.3 GB</span>
+          <div class="rag-card-label">Documentos Totales</div>
+          <div class="rag-card-value c-cyan">593</div>
+          <div class="rag-card-sub">Documentos JSON · 4.3 GB en total</div>
+        </div>
+        <div class="rag-subsection" style="position:relative;">
+          <span style="position:absolute;top:10px;right:12px;font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:99px;background:rgba(167,139,250,.1);color:var(--purple);border:1px solid rgba(167,139,250,.2);">🟣 1,485</span>
+          <div class="rag-card-label">PERTinencias</div>
+          <div class="rag-card-value c-purple">1,485</div>
+          <div class="rag-card-sub">Chunks en colección ChromaDB pert_docs</div>
+        </div>
+      </div>
+
+      <!-- Barra de Resumen -->
+      <div class="rag-subsection" style="margin-bottom:20px;">
+        <div class="rag-card-label" style="margin-bottom:10px;">📊 Repositorio Ambiental · Resumen General</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+          <div style="background:var(--surf2);border-radius:10px;padding:12px;text-align:center;">
+            <div style="font-size:1.3rem;font-weight:800;color:var(--blue);">47</div>
+            <div style="font-size:.7rem;color:var(--muted);">RCAs en SRCA</div>
+          </div>
+          <div style="background:var(--surf2);border-radius:10px;padding:12px;text-align:center;">
+            <div style="font-size:1.3rem;font-weight:800;color:var(--green);">36</div>
+            <div style="font-size:.7rem;color:var(--muted);">RCAs en Matriz</div>
+          </div>
+          <div style="background:var(--surf2);border-radius:10px;padding:12px;text-align:center;">
+            <div style="font-size:1.3rem;font-weight:800;color:var(--cyan);">593</div>
+            <div style="font-size:.7rem;color:var(--muted);">Documentos JSON</div>
+          </div>
+          <div style="background:var(--surf2);border-radius:10px;padding:12px;text-align:center;">
+            <div style="font-size:1.3rem;font-weight:800;color:var(--purple);">1,485</div>
+            <div style="font-size:.7rem;color:var(--muted);">Chunks PERT</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LISTADO COMPLETO DE 36 RCAs -->
+      <div class="rag-subsection" style="margin-bottom:20px;">
+        <div class="rag-card-label" style="margin-bottom:12px;">📋 Listado de RCAs — Matriz de Seguimiento Minera Centinela</div>
+        <div style="overflow-x:auto;">
+          <table class="rag-table" id="seia-table">
+            <thead>
+              <tr>
+                <th style="width:50px;">#</th>
+                <th style="width:40px;text-align:center;">Estado</th>
+                <th style="width:55px;">Tipo</th>
+                <th style="width:110px;">RCA</th>
+                <th>Nombre del Proyecto</th>
+                <th style="width:55px;text-align:center;">PDFs</th>
+                <th style="width:55px;text-align:center;">Anexos</th>
+                <th style="width:55px;text-align:center;">Planos</th>
+                <th style="width:55px;text-align:center;">Adendas</th>
+                <th style="width:60px;text-align:right;">MB</th>
+                <th style="width:80px;">Fecha</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">1</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-blue" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">EIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">31/1997</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="El Tesoro">El Tesoro</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">10.6</td><td style="font-size:.8rem;color:var(--muted);">Oct 1997</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">2</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-blue" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">EIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">203/2003</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Modificación Depósito de Ripios El Tesoro">Modificación Depósito de Ripios El Tesoro</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">56.0</td><td style="font-size:.8rem;color:var(--muted);">2003</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">3</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">134/2004</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Uso Aceites Lubricantes Residuales">Uso Aceites Lubricantes Residuales</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">36.3</td><td style="font-size:.8rem;color:var(--muted);">2004</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">4</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">203/2005</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Optimización Capacidad Tratamiento Mineral">Optimización Capacidad Tratamiento Mineral</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">44.0</td><td style="font-size:.8rem;color:var(--muted);">2005</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">5</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">251/2006</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Planta de Tratamiento de Residuos Sólidos">Planta de Tratamiento de Residuos Sólidos</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">52.0</td><td style="font-size:.8rem;color:var(--muted);">2006</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">6</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-blue" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">EIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">356/2007</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Continuidad Operacional El Tesoro">Continuidad Operacional El Tesoro</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">55.6</td><td style="font-size:.8rem;color:var(--muted);">2007</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">7</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">33/2008</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Prospección Minera Telégrafo">Prospección Minera Telégrafo</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">56.5</td><td style="font-size:.8rem;color:var(--muted);">2008</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">8</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">394/2008</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Línea 1x220kV Tesla/Esperanza">Línea 1x220kV Tesla/Esperanza</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">36.4</td><td style="font-size:.8rem;color:var(--muted);">2008</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">9</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-blue" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">EIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">212/2008</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Proyecto Esperanza">Proyecto Esperanza</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">72.0</td><td style="font-size:.8rem;color:var(--muted);">2008</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">10</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">148/2008</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Parque Generación Eléctrica Esperanza">Parque Generación Eléctrica Esperanza</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">47.5</td><td style="font-size:.8rem;color:var(--muted);">2008</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">11</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">242/2008</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Ampliación Almacenamiento Combustible">Ampliación Almacenamiento Combustible</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">46.2</td><td style="font-size:.8rem;color:var(--muted);">2008</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">12</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-blue" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">EIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">199/2009</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Actualización Proyecto Esperanza">Actualización Proyecto Esperanza</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">45.6</td><td style="font-size:.8rem;color:var(--muted);">2009</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">13</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">161/2009</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Línea 2x220kV Cobre/Esperanza">Línea 2x220kV Cobre/Esperanza</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">62.0</td><td style="font-size:.8rem;color:var(--muted);">2009</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">14</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">49/2009</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Lixiviación Acopio Mineral Oxidado">Lixiviación Acopio Mineral Oxidado</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">66.5</td><td style="font-size:.8rem;color:var(--muted);">2009</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">15</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">240/2009</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Aumento Capacidad Ácido Sulfúrico">Aumento Capacidad Ácido Sulfúrico</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">46.4</td><td style="font-size:.8rem;color:var(--muted);">2009</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">16</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">225/2010</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Continuidad Operacional Minera El Tesoro: Explotación Yacimiento Mirador y Ampliación Depósito de Ripios">Continuidad Operacional El Tesoro: Yacimiento Mirador</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">66.2</td><td style="font-size:.8rem;color:var(--muted);">2010</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">17</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">241/2010</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Segunda Actualización Esperanza">Segunda Actualización Esperanza</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">40.9</td><td style="font-size:.8rem;color:var(--muted);">2010</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">18</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">194/2011</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Planta Termo Solar Calentamiento Soluciones">Planta Termo Solar Calentamiento Soluciones</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">24.2</td><td style="font-size:.8rem;color:var(--muted);">2011</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">19</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">2/2011</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Unidad de Filtrado Aceites Usados">Unidad de Filtrado Aceites Usados</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">23.8</td><td style="font-size:.8rem;color:var(--muted);">2011</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">20</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-blue" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">EIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">201/2013</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Óxidos Encuentro">Óxidos Encuentro</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">128.0</td><td style="font-size:.8rem;color:var(--muted);">2013</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">21</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">358/2013</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Cuarta Actualización Esperanza">Cuarta Actualización Esperanza</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">32.2</td><td style="font-size:.8rem;color:var(--muted);">2013</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">22</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-blue" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">EIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">431/2014</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Proyecto Centinela">Proyecto Centinela (Integración Esperanza + El Tesoro)</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">105.0</td><td style="font-size:.8rem;color:var(--muted);">2014</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">23</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-blue" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">EIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">215/2015</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Integración Minera Centinela">Integración Minera Centinela</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">115.0</td><td style="font-size:.8rem;color:var(--muted);">2015</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">24</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-blue" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">EIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">256/2015</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Optimización Proyecto Óxidos Encuentro">Optimización Proyecto Óxidos Encuentro</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">192.0</td><td style="font-size:.8rem;color:var(--muted);">2015</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">25</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-blue" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">EIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">436/2016</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Desarrollo Minera Centinela">Desarrollo Minera Centinela</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">1,428.0</td><td style="font-size:.8rem;color:var(--muted);">2016</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">26</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">187/2017</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Segunda Optimización Proyecto Óxidos Encuentro">Segunda Optimización Óxidos Encuentro</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">42.0</td><td style="font-size:.8rem;color:var(--muted);">2017</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">27</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-blue" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">EIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">325/2017</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Optimización Depósito Relaves">Optimización Depósito Relaves</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">105.0</td><td style="font-size:.8rem;color:var(--muted);">2017</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">28</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">173/2018</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Calentador Soluciones SX-EW">Calentador Soluciones SX-EW</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">89.0</td><td style="font-size:.8rem;color:var(--muted);">2018</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">29</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-blue" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">EIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">16/2019</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Continuidad Operacional Integración">Continuidad Operacional Integración</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">135.0</td><td style="font-size:.8rem;color:var(--muted);">2019</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">30</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">58/2019</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Actualización Desarrollo Centinela">Actualización Desarrollo Centinela</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">95.0</td><td style="font-size:.8rem;color:var(--muted);">2019</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">31</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">267/2021</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Polo Sur y Optimización Minera Centinela">Polo Sur y Optimización Minera Centinela</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">238.0</td><td style="font-size:.8rem;color:var(--muted);">Jul 2021</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">32</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-blue" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">EIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">20210200196/2021</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Depósito de Relaves en Rajo">Depósito de Relaves en Rajo</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">172.0</td><td style="font-size:.8rem;color:var(--muted);">2021</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">33</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">202302001198/2023</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Aumento Capacidad Almacenamiento Combustible">Aumento Capacidad Almacenamiento Combustible</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">145.0</td><td style="font-size:.8rem;color:var(--muted);">2023</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">34</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-blue" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">EIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">20260200168/2026</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Modificación Rajo Mirador y El Llano">Modificación Rajo Mirador y El Llano</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">145.0</td><td style="font-size:.8rem;color:var(--muted);">2026</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">35</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-blue" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">EIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">215/2015 *</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Integración Minera Centinela — Optimización">Integración Minera Centinela — Optimización</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">—</td><td style="font-size:.8rem;color:var(--muted);">2015</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">36</td><td style="text-align:center;"><span class="badge b-ok">Completa</span></td><td><span class="t-purple" style="display:inline-block;padding:1px 6px;border-radius:12px;font-size:.65rem;font-weight:700;">DIA</span></td><td style="font-family:var(--mono);font-size:.82rem;">225/2010 *</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Continuidad Operacional El Tesoro — Continuidad">Continuidad Operacional El Tesoro — Continuidad</td><td style="text-align:center;font-family:var(--mono);">1</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:center;font-family:var(--mono);">—</td><td style="text-align:right;font-family:var(--mono);">—</td><td style="font-size:.8rem;color:var(--muted);">2010</td></tr>
+            </tbody>
+          </table>
+          <div style="margin-top:10px;padding:8px 12px;background:var(--surf2);border-radius:8px;font-size:.72rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;">
+            <span>📊 <strong style="color:var(--txt);">36 RCAs</strong> en matriz de seguimiento priorizado</span>
+            <span>📁 <strong style="color:var(--txt);" id="dyn-rcas-count">44</strong> RCAs indexadas en Holmes</span>
+            <span>💾 <strong style="color:var(--txt);" id="dyn-snifa-count">590</strong> documentos SNIFA auditados</span>
+            <span>🧩 <strong style="color:var(--txt);" id="dyn-pert-inline">1,470 chunks</strong> de PERTinencias</span>
+            <span style="font-size:.65rem;color:var(--muted);">* Entradas duplicadas en matriz con distinto alcance</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════ SEPARADOR ══════ -->
+      <div style="display:flex;align-items:center;gap:16px;margin:28px 0 24px;">
+        <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--bdr),transparent);"></div>
+        <span style="font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);white-space:nowrap;">⛁ PERTinencias · Consultas de Pertinencia SEIA</span>
+        <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--bdr),transparent);"></div>
+      </div>
+
+      <!-- PERTINENCIAS -->
+      <div class="rag-subsection" style="margin-bottom:20px;">
+        <div class="rag-card-label" style="margin-bottom:10px;">📄 Consultas de Pertinencia — SEIA</div>
+        <div style="margin-bottom:14px;">
+          <p style="font-size:.85rem;color:var(--muted);line-height:1.65;margin-bottom:10px;">
+            Documentos de evaluación de <strong style="color:var(--txt);">pertinencia de ingreso al SEIA</strong>, 
+            que determinan si proyectos o actividades requieren o no ingresar al Sistema de Evaluación de Impacto Ambiental. 
+            Indexados en colección ChromaDB <code style="font-family:var(--mono);color:var(--purple);font-size:.8rem;">pert_docs</code>.
+          </p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+          <div style="background:var(--surf2);border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-size:1.8rem;font-weight:800;color:var(--purple);" id="dyn-pert-total">1,470</div>
+            <div style="font-size:.7rem;color:var(--muted);">Total chunks indexados</div>
+          </div>
+          <div style="background:var(--surf2);border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-size:1.8rem;font-weight:800;color:var(--cyan);">pert_docs</div>
+            <div style="font-size:.7rem;color:var(--muted);">Colección ChromaDB</div>
+          </div>
+        </div>
+        <div class="rag-card-label" style="margin-bottom:8px;">📑 Ejemplos representativos</div>
+        <div style="overflow-x:auto;">
+          <table class="rag-table">
+            <thead>
+              <tr>
+                <th style="width:30px;">#</th>
+                <th style="width:100px;">ID Documento</th>
+                <th>Descripción</th>
+                <th style="width:55px;text-align:center;">Año</th>
+                <th style="width:155px;">Resolución</th>
+                <th style="width:60px;text-align:center;">Chunks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">1</td><td style="font-family:var(--mono);font-size:.82rem;color:var(--cyan);">PERT-001</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Evaluación de pertinencia para proyecto de sondajes exploratorios en sector Centinela">Evaluación de pertinencia — Sondajes exploratorios sector Centinela</td><td style="text-align:center;font-family:var(--mono);font-size:.8rem;">2024</td><td style="font-family:var(--mono);font-size:.76rem;color:var(--muted);">Res Exenta N° 2024-01-SEA</td><td style="text-align:center;font-family:var(--mono);">8</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">2</td><td style="font-family:var(--mono);font-size:.82rem;color:var(--cyan);">PERT-002</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Consulta sobre modificación de líneas de transmisión eléctrica existentes">Modificación líneas transmisión eléctrica — Consulta ingreso SEIA</td><td style="text-align:center;font-family:var(--mono);font-size:.8rem;">2024</td><td style="font-family:var(--mono);font-size:.76rem;color:var(--muted);">Res Exenta N° 2024-07-SEA</td><td style="text-align:center;font-family:var(--mono);">6</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">3</td><td style="font-family:var(--mono);font-size:.82rem;color:var(--cyan);">PERT-003</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Pertinencia para ampliación de capacidad de planta de tratamiento de aguas">Ampliación planta tratamiento aguas — Pertinencia de ingreso</td><td style="text-align:center;font-family:var(--mono);font-size:.8rem;">2023</td><td style="font-family:var(--mono);font-size:.76rem;color:var(--muted);">Res Exenta N° 2023-15-SEA</td><td style="text-align:center;font-family:var(--mono);">5</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">4</td><td style="font-family:var(--mono);font-size:.82rem;color:var(--cyan);">PERT-004</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Evaluación de pertinencia para construcción de nuevo depósito de ripios">Nuevo depósito de ripios — Evaluación pertinencia SEIA</td><td style="text-align:center;font-family:var(--mono);font-size:.8rem;">2024</td><td style="font-family:var(--mono);font-size:.76rem;color:var(--muted);">Res Exenta N° 2024-22-SEA</td><td style="text-align:center;font-family:var(--mono);">7</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">5</td><td style="font-family:var(--mono);font-size:.82rem;color:var(--cyan);">PERT-005</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Consulta de pertinencia para proyecto de exploración minera en sector Esperanza">Proyecto exploración minera sector Esperanza — Pertinencia</td><td style="text-align:center;font-family:var(--mono);font-size:.8rem;">2022</td><td style="font-family:var(--mono);font-size:.76rem;color:var(--muted);">Res Exenta N° 2022-09-SEA</td><td style="text-align:center;font-family:var(--mono);">4</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">6</td><td style="font-family:var(--mono);font-size:.82rem;color:var(--cyan);">PERT-006</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Evaluación de si actividad de mantención de equipos fijos requiere ingreso al SEIA">Mantención equipos fijos — Actividad no comprendida en SEIA</td><td style="text-align:center;font-family:var(--mono);font-size:.8rem;">2023</td><td style="font-family:var(--mono);font-size:.76rem;color:var(--muted);">Res Exenta N° 2023-31-SEA</td><td style="text-align:center;font-family:var(--mono);">3</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">7</td><td style="font-family:var(--mono);font-size:.82rem;color:var(--cyan);">PERT-007</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Pertinencia para cambio de uso de suelo en área aledaña a faena minera">Cambio uso suelo área aledaña faena — Consulta pertinencia</td><td style="text-align:center;font-family:var(--mono);font-size:.8rem;">2025</td><td style="font-family:var(--mono);font-size:.76rem;color:var(--muted);">Res Exenta N° 2025-05-SEA</td><td style="text-align:center;font-family:var(--mono);">5</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">8</td><td style="font-family:var(--mono);font-size:.82rem;color:var(--cyan);">PERT-008</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Evaluación de pertinencia para instalación de planta desalinizadora auxiliar">Planta desalinizadora auxiliar — Pertinencia ingreso SEIA</td><td style="text-align:center;font-family:var(--mono);font-size:.8rem;">2024</td><td style="font-family:var(--mono);font-size:.76rem;color:var(--muted);">Res Exenta N° 2024-18-SEA</td><td style="text-align:center;font-family:var(--mono);">6</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">9</td><td style="font-family:var(--mono);font-size:.82rem;color:var(--cyan);">PERT-009</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Consulta sobre modificación de ruta de transporte interno en faena minera">Modificación ruta transporte interno — Consulta pertinencia</td><td style="text-align:center;font-family:var(--mono);font-size:.8rem;">2023</td><td style="font-family:var(--mono);font-size:.76rem;color:var(--muted);">Res Exenta N° 2023-42-SEA</td><td style="text-align:center;font-family:var(--mono);">4</td></tr>
+              <tr><td style="font-family:var(--mono);color:var(--muted);">10</td><td style="font-family:var(--mono);font-size:.82rem;color:var(--cyan);">PERT-010</td><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="Evaluación de pertinencia para habilitación de nuevo frente de explotación">Nuevo frente de explotación — Evaluación pertinencia SEIA</td><td style="text-align:center;font-family:var(--mono);font-size:.8rem;">2025</td><td style="font-family:var(--mono);font-size:.76rem;color:var(--muted);">Res Exenta N° 2025-11-SEA</td><td style="text-align:center;font-family:var(--mono);">8</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:12px;padding:10px 14px;background:linear-gradient(135deg,rgba(167,139,250,.08),rgba(56,232,255,.04));border:1px solid rgba(167,139,250,.15);border-radius:10px;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--muted);">
+            <span style="font-size:1.1rem;">🗄️</span>
+            <span>Colección <strong style="color:var(--purple);">pert_docs</strong> en ChromaDB — <strong style="color:var(--txt);">1,485 chunks</strong> de consultas de pertinencia. 
+            Datos fuente: documentos de evaluación del SEA sobre si proyectos requieren o no ingresar al SEIA.</span>
           </div>
         </div>
       </div>
@@ -980,6 +1307,113 @@ body.light .foot{background:rgba(255,255,255,.55);}
     </div>
 
     <!-- ══════ PROJECTS ══════ -->
+    <div class="section" id="s-rag">
+      <div class="section-header">
+        <h2 class="section-title">🔍 Holmes RAG — Consultas</h2>
+        <div class="section-actions">
+          <button class="btn-action" onclick="refreshRagMetrics()">🔄 Actualizar</button>
+        </div>
+      </div>
+      
+      <div class="rag-grid">
+        <div class="rag-card">
+          <div class="rag-card-header">
+            <span class="rag-card-icon">📊</span>
+            <span class="rag-card-title">Chunks Indexados</span>
+          </div>
+          <div class="rag-card-value c-green" id="dyn-rag-indexed">107,105</div>
+          <div class="rag-card-sub">Colección principal · cen_docs</div>
+        </div>
+        
+        <div class="rag-card">
+          <div class="rag-card-header">
+            <span class="rag-card-icon">⏳</span>
+            <span class="rag-card-title">Pendientes de Procesar</span>
+          </div>
+          <div class="rag-card-value c-orange">14,714</div>
+          <div class="rag-card-sub">Colección · cen_docs_pending</div>
+        </div>
+        
+        <div class="rag-card">
+          <div class="rag-card-header">
+            <span class="rag-card-icon">📄</span>
+            <span class="rag-card-title">Chunks PERTs</span>
+          </div>
+          <div class="rag-card-value c-purple" id="dyn-rag-perts">1,470</div>
+          <div class="rag-card-sub">Colección dedicada · pert_docs</div>
+        </div>
+        
+        <div class="rag-card">
+          <div class="rag-card-header">
+            <span class="rag-card-icon">📁</span>
+            <span class="rag-card-title">Documentos Fuente</span>
+          </div>
+          <div class="rag-card-value c-cyan" id="dyn-rag-docs">588</div>
+          <div class="rag-card-sub">Archivos JSON procesados · SRCA</div>
+        </div>
+      </div>
+      
+      <div class="rag-sections">
+        <div class="rag-subsection">
+          <h3 class="rag-subtitle">⚙️ Configuración del Sistema</h3>
+          <div class="rag-list">
+            <div class="rag-item">
+              <span class="rag-item-rank">🤖</span>
+              <span class="rag-item-text">Modelo RAG</span>
+              <span class="rag-item-count" style="min-width:auto;padding:0 10px;font-size:.73rem;">ollama-local/qwen2.5:7b</span>
+            </div>
+            <div class="rag-item">
+              <span class="rag-item-rank">🧠</span>
+              <span class="rag-item-text">Embeddings</span>
+              <span class="rag-item-count" style="min-width:auto;padding:0 10px;font-size:.73rem;">nomic-embed-text (Ollama local)</span>
+            </div>
+            <div class="rag-item">
+              <span class="rag-item-rank">💾</span>
+              <span class="rag-item-text">Peso Documentos</span>
+              <span class="rag-item-count" style="min-width:auto;padding:0 10px;font-size:.73rem;">4.3 GB</span>
+            </div>
+            <div class="rag-item">
+              <span class="rag-item-rank">📋</span>
+              <span class="rag-item-text">RCAs Identificadas</span>
+              <span class="rag-item-count" style="min-width:auto;padding:0 10px;font-size:.73rem;">47</span>
+            </div>
+            <div class="rag-item">
+              <span class="rag-item-rank">🔍</span>
+              <span class="rag-item-text">Suscripción Modelo</span>
+              <span class="rag-item-count" style="min-width:auto;padding:0 10px;font-size:.73rem;">Fija mensual</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="rag-subsection">
+          <h3 class="rag-subtitle">📂 Colecciones ChromaDB</h3>
+          <div class="rag-list" id="rag-chroma-collections">
+            <div class="rag-item">
+              <span class="rag-item-rank">1</span>
+              <span class="rag-item-text">cen_docs</span>
+              <span class="rag-item-count" id="dyn-cen-chunks">107,105 chunks</span>
+            </div>
+            <div class="rag-item">
+              <span class="rag-item-rank">2</span>
+              <span class="rag-item-text">pert_docs</span>
+              <span class="rag-item-count" id="dyn-pert-chunks">1,470 chunks</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="rag-subsection">
+        <h3 class="rag-subtitle">📊 Resumen del Repositorio</h3>
+        <div class="int-grid">
+          <div class="int-item"><span class="int-icon">📁</span><div><div class="int-name">Documentos SRCA</div><div style="font-size:.67rem;color:var(--muted);">/expedientes/srca/</div></div><span class="int-ok">593 JSON</span></div>
+          <div class="int-item"><span class="int-icon">📋</span><div><div class="int-name">RCAs en Matriz</div><div style="font-size:.67rem;color:var(--muted);">Seguimiento priorizado</div></div><span class="int-ok">36</span></div>
+          <div class="int-item"><span class="int-icon">🔖</span><div><div class="int-name">RCAs Procesadas</div><div style="font-size:.67rem;color:var(--muted);">En SRCA</div></div><span class="int-ok">47</span></div>
+          <div class="int-item"><span class="int-icon">💾</span><div><div class="int-name">Peso Total</div><div style="font-size:.67rem;color:var(--muted);">Documentos ambientales</div></div><span class="int-ok">4.3 GB</span></div>
+          <div class="int-item"><span class="int-icon">🔗</span><div><div class="int-name">RCA 267/2021</div><div style="font-size:.67rem;color:var(--muted);">Polo Sur · Descargada</div></div><span class="int-ok">✓ OK</span></div>
+        </div>
+      </div>
+    </div>
+
     <div class="section" id="s-projects">
       <div class="pf">
         <input class="pinp" type="text" id="pName" placeholder="Nombre del proyecto..." onkeydown="if(event.key==='Enter')addProject()"/>
@@ -1011,9 +1445,9 @@ body.light .foot{background:rgba(255,255,255,.55);}
       </div>
       <div class="cost-krow">
         <div class="ck">
-          <div class="ck-lbl">Balance Disponible</div>
-          <div class="ck-val c-green" id="d-balance">6.04 <span style="font-size:.9rem;color:var(--muted);">USD</span></div>
-          <div class="ck-sub" id="d-balance-sub">saldo prepago disponible</div>
+          <div class="ck-lbl">Balance DeepSeek</div>
+          <div class="ck-val c-green" id="d-balance">$2.67 <span style="font-size:.9rem;color:var(--muted);">USD</span></div>
+          <div class="ck-sub">Disponible · Topped up</div>
           <div class="bar-wrap">
             <div class="bar-lbl"><span>Disponible</span><span id="d-pct">100%</span></div>
             <div class="bar-track"><div class="bar-fill" id="d-bar" style="width:100%;"></div></div>
@@ -1037,82 +1471,129 @@ body.light .foot{background:rgba(255,255,255,.55);}
       </div>
 
       
-<div class="sch"><div class="stitle">🏆 Ranking Modelos IA · Top 15</div></div>
+<div class="sch"><div class="stitle">🏆 Ranking Modelos IA Free · Top 12</div></div>
       <div class="rank-grid">
         <div class="rank-card" style="border-color:rgba(34,208,138,.4);">
-          <div class="rank-head"><div class="rank-name"><span class="rank-medal">🥇</span>llama-3.3-70b-versatile</div><div class="rank-pts top">96 pts</div></div>
-          <div class="rank-scores"><span class="rscore rs-v">Vel 9/10</span><span class="rscore rs-q">Cal 10/10</span><span class="rscore rs-c">Ctx 9/10</span><span class="rscore rs-f">Free 10/10</span></div>
-          <div class="rank-spec">Mejor balance calidad/velocidad · Razonamiento · Código · Español perfecto</div>
+          <div class="rank-head"><div class="rank-name"><span class="rank-medal">🥇</span>claude-sonnet-4-6</div><div class="rank-pts top">97 pts</div></div>
+          <div class="rank-scores"><span class="rscore rs-v">Vel 9/10</span><span class="rscore rs-q">Cal 10/10</span><span class="rscore rs-c">Ctx 10/10</span><span class="rscore rs-f">Free 7/10</span></div>
+          <div class="rank-spec">⭐ Modelo principal Valy · Razonamiento profundo · 200K contexto · Anthropic</div>
         </div>
         <div class="rank-card" style="border-color:rgba(34,208,138,.3);">
-          <div class="rank-head"><div class="rank-name"><span class="rank-medal">🥈</span>gemini-2.5-flash</div><div class="rank-pts top">93 pts</div></div>
-          <div class="rank-scores"><span class="rscore rs-v">Vel 8/10</span><span class="rscore rs-q">Cal 10/10</span><span class="rscore rs-c">Ctx 10/10</span><span class="rscore rs-f">Free 10/10</span></div>
-          <div class="rank-spec">Multimodal · Razonamiento · Gratuito · 1M contexto</div>
+          <div class="rank-head"><div class="rank-name"><span class="rank-medal">🥈</span>claude-sonnet-4</div><div class="rank-pts top">95 pts</div></div>
+          <div class="rank-scores"><span class="rscore rs-v">Vel 8/10</span><span class="rscore rs-q">Cal 10/10</span><span class="rscore rs-c">Ctx 10/10</span><span class="rscore rs-f">Free 7/10</span></div>
+          <div class="rank-spec">⭐ Modelo Diana · Diseño · Anthropic</div>
         </div>
         <div class="rank-card" style="border-color:rgba(34,208,138,.25);">
-          <div class="rank-head"><div class="rank-name"><span class="rank-medal">🥉</span>llama-3.1-8b-instant</div><div class="rank-pts top">88 pts</div></div>
-          <div class="rank-scores"><span class="rscore rs-v">Vel 10/10</span><span class="rscore rs-q">Cal 7/10</span><span class="rscore rs-c">Ctx 9/10</span><span class="rscore rs-f">Free 10/10</span></div>
-          <div class="rank-spec">Ultra rápido (~400ms) · Tareas simples · Traducción</div>
+          <div class="rank-head"><div class="rank-name"><span class="rank-medal">🥉</span>gpt-5.5 (OpenAI Codex)</div><div class="rank-pts top">93 pts</div></div>
+          <div class="rank-scores"><span class="rscore rs-v">Vel 8/10</span><span class="rscore rs-q">Cal 10/10</span><span class="rscore rs-c">Ctx 9/10</span><span class="rscore rs-f">Free 6/10</span></div>
+          <div class="rank-spec">⭐ Modelo Doc · QAQC documental · OpenAI</div>
         </div>
         <div class="rank-card">
-          <div class="rank-head"><div class="rank-name"><span class="rank-medal">4.</span>deepseek-v4-flash</div><div class="rank-pts mid">90 pts</div></div>
-          <div class="rank-scores"><span class="rscore rs-v">Vel 8/10</span><span class="rscore rs-q">Cal 10/10</span><span class="rscore rs-c">Ctx 10/10</span><span class="rscore rs-f">Free 8/10</span></div>
-          <div class="rank-spec">⭐ Modelo Valy · Razonamiento · 1M contexto · $0.14/M tok</div>
+          <div class="rank-head"><div class="rank-name"><span class="rank-medal">4.</span>nvidia-build/llama-3.3-70b</div><div class="rank-pts mid">88 pts</div></div>
+          <div class="rank-scores"><span class="rscore rs-v">Vel 8/10</span><span class="rscore rs-q">Cal 9/10</span><span class="rscore rs-c">Ctx 9/10</span><span class="rscore rs-f">Free 10/10</span></div>
+          <div class="rank-spec">NVIDIA NIM · Mejor balance calidad/velocidad gratis · Razonamiento</div>
         </div>
         <div class="rank-card">
-          <div class="rank-head"><div class="rank-name"><span class="rank-medal">5.</span>qwen/qwen3-32b</div><div class="rank-pts mid">85 pts</div></div>
+          <div class="rank-head"><div class="rank-name"><span class="rank-medal">5.</span>nvidia-build/dsv4-pro</div><div class="rank-pts mid">86 pts</div></div>
+          <div class="rank-scores"><span class="rscore rs-v">Vel 7/10</span><span class="rscore rs-q">Cal 10/10</span><span class="rscore rs-c">Ctx 10/10</span><span class="rscore rs-f">Free 10/10</span></div>
+          <div class="rank-spec">NVIDIA NIM · Fallback Doc · Razonamiento profundo · 128K contexto</div>
+        </div>
+        <div class="rank-card">
+          <div class="rank-head"><div class="rank-name"><span class="rank-medal">6.</span>nvidia-build/llama-3.1-70b</div><div class="rank-pts mid">84 pts</div></div>
+          <div class="rank-scores"><span class="rscore rs-v">Vel 7/10</span><span class="rscore rs-q">Cal 8/10</span><span class="rscore rs-c">Ctx 9/10</span><span class="rscore rs-f">Free 10/10</span></div>
+          <div class="rank-spec">NVIDIA NIM · Fallback Doc tier 2 · Versátil · Español sólido</div>
+        </div>
+        <div class="rank-card">
+          <div class="rank-head"><div class="rank-name"><span class="rank-medal">7.</span>nvidia-build/llama-3.1-8b</div><div class="rank-pts mid">80 pts</div></div>
+          <div class="rank-scores"><span class="rscore rs-v">Vel 10/10</span><span class="rscore rs-q">Cal 7/10</span><span class="rscore rs-c">Ctx 8/10</span><span class="rscore rs-f">Free 10/10</span></div>
+          <div class="rank-spec">NVIDIA NIM · Ultra rápido · Tareas simples</div>
+        </div>
+        <div class="rank-card">
+          <div class="rank-head"><div class="rank-name"><span class="rank-medal">8.</span>qwen/qwen3-32b</div><div class="rank-pts mid">82 pts</div></div>
           <div class="rank-scores"><span class="rscore rs-v">Vel 7/10</span><span class="rscore rs-q">Cal 9/10</span><span class="rscore rs-c">Ctx 9/10</span><span class="rscore rs-f">Free 10/10</span></div>
-          <div class="rank-spec">Razonamiento profundo (thinking) · Análisis complejos</div>
+          <div class="rank-spec">OpenRouter free · Razonamiento profundo (thinking) · Análisis complejos</div>
         </div>
         <div class="rank-card">
-          <div class="rank-head"><div class="rank-name"><span class="rank-medal">6.</span>gemini-2.0-flash</div><div class="rank-pts mid">84 pts</div></div>
-          <div class="rank-scores"><span class="rscore rs-v">Vel 9/10</span><span class="rscore rs-q">Cal 8/10</span><span class="rscore rs-c">Ctx 10/10</span><span class="rscore rs-f">Free 10/10</span></div>
-          <div class="rank-spec">Versátil · Rápido · Multimodal estable</div>
+          <div class="rank-head"><div class="rank-name"><span class="rank-medal">9.</span>nvidia-build/glm-5.2</div><div class="rank-pts mid">81 pts</div></div>
+          <div class="rank-scores"><span class="rscore rs-v">Vel 8/10</span><span class="rscore rs-q">Cal 8/10</span><span class="rscore rs-c">Ctx 8/10</span><span class="rscore rs-f">Free 10/10</span></div>
+          <div class="rank-spec">NVIDIA NIM · Fallback Diana · Bilingüe · Buen rendimiento general</div>
         </div>
         <div class="rank-card">
-          <div class="rank-head"><div class="rank-name"><span class="rank-medal">7.</span>gemini-2.5-pro</div><div class="rank-pts mid">88 pts</div></div>
-          <div class="rank-scores"><span class="rscore rs-v">Vel 6/10</span><span class="rscore rs-q">Cal 10/10</span><span class="rscore rs-c">Ctx 10/10</span><span class="rscore rs-f">Free 9/10</span></div>
-          <div class="rank-spec">Más potente Google · Preview · Tareas complejas</div>
+          <div class="rank-head"><div class="rank-name"><span class="rank-medal">10.</span>groq/llama-3.3-70b-versatile</div><div class="rank-pts low">78 pts</div></div>
+          <div class="rank-scores"><span class="rscore rs-v">Vel 9/10</span><span class="rscore rs-q">Cal 8/10</span><span class="rscore rs-c">Ctx 8/10</span><span class="rscore rs-f">Free 8/10</span></div>
+          <div class="rank-spec">Groq API · Rápido · Rate limit 8K TPM</div>
         </div>
         <div class="rank-card">
-          <div class="rank-head"><div class="rank-name"><span class="rank-medal">8.</span>groq/compound</div><div class="rank-pts mid">78 pts</div></div>
-          <div class="rank-scores"><span class="rscore rs-v">Vel 8/10</span><span class="rscore rs-q">Cal 8/10</span><span class="rscore rs-c">Ctx 9/10</span><span class="rscore rs-f">Free 7/10</span></div>
-          <div class="rank-spec">Uso general · Balanceado · Rate limit 8K TPM</div>
+          <div class="rank-head"><div class="rank-name"><span class="rank-medal">11.</span>ollama-local/qwen2.5:7b</div><div class="rank-pts low">74 pts</div></div>
+          <div class="rank-scores"><span class="rscore rs-v">Vel 6/10</span><span class="rscore rs-q">Cal 7/10</span><span class="rscore rs-c">Ctx 5/10</span><span class="rscore rs-f">Free 10/10</span></div>
+          <div class="rank-spec">🦙 Modelo Holmes/Pelusa local · Sin dependencia externa · 100% offline</div>
         </div>
         <div class="rank-card">
-          <div class="rank-head"><div class="rank-name"><span class="rank-medal">9.</span>gemini-2.0-flash-lite</div><div class="rank-pts low">77 pts</div></div>
-          <div class="rank-scores"><span class="rscore rs-v">Vel 10/10</span><span class="rscore rs-q">Cal 6/10</span><span class="rscore rs-c">Ctx 10/10</span><span class="rscore rs-f">Free 10/10</span></div>
-          <div class="rank-spec">Ultra liviano · Tareas simples · Alta velocidad</div>
+          <div class="rank-head"><div class="rank-name"><span class="rank-medal">12.</span>deepseek-v4-flash</div><div class="rank-pts low">72 pts</div></div>
+          <div class="rank-scores"><span class="rscore rs-v">Vel 8/10</span><span class="rscore rs-q">Cal 9/10</span><span class="rscore rs-c">Ctx 10/10</span><span class="rscore rs-f">Free 6/10</span></div>
+          <div class="rank-spec">DeepSeek API · Razonamiento · 1M contexto · US$0.14/M tok · Fallback histórico</div>
         </div>
-        <div class="rank-card">
-          <div class="rank-head"><div class="rank-name"><span class="rank-medal">10.</span>gemma-4-31b-it</div><div class="rank-pts low">76 pts</div></div>
-          <div class="rank-scores"><span class="rscore rs-v">Vel 7/10</span><span class="rscore rs-q">Cal 8/10</span><span class="rscore rs-c">Ctx 7/10</span><span class="rscore rs-f">Free 10/10</span></div>
-          <div class="rank-spec">Modelo más reciente Google · OpenRouter free</div>
+      </div>
+
+      <div class="sch" style="margin-top:24px;"><div class="stitle">🦙 Modelos Locales (Ollama) · macOS M2</div></div>
+      <div class="card mb14">
+        <div class="ch"><div class="ct">Modelos instalados localmente</div><span class="badge b-ok">6 modelos</span></div>
+        <div class="cb">
+          <div class="sys-row">
+            <div class="si"><span class="si-icon">🦙</span><span class="si-lbl">qwen2.5:14b</span><span class="si-val">Razonamiento profundo · Fallback Diana</span><span class="badge b-ok">OK</span></div>
+            <div class="si"><span class="si-icon">🦙</span><span class="si-lbl">phi4:14b</span><span class="si-val">Microsoft · Razonamiento · Precisión técnica</span><span class="badge b-ok">OK</span></div>
+            <div class="si"><span class="si-icon">🦙</span><span class="si-lbl">llama3.2:3b</span><span class="si-val">Meta · Ligero · Tareas rápidas offline</span><span class="badge b-ok">OK</span></div>
+            <div class="si"><span class="si-icon">🦙</span><span class="si-lbl">minicpm-v:8b</span><span class="si-val">Visión · Análisis de imágenes offline</span><span class="badge b-ok">OK</span></div>
+            <div class="si"><span class="si-icon">🦙</span><span class="si-lbl">qwen2.5:7b</span><span class="si-val">Modelo Holmes / Pelusa · RAG compliance</span><span class="badge b-ok">OK</span></div>
+            <div class="si"><span class="si-icon">🦙</span><span class="si-lbl">nomic-embed-text</span><span class="si-val">Embeddings · ChromaDB</span><span class="badge b-ok">OK</span></div>
+          </div>
         </div>
-        <div class="rank-card">
-          <div class="rank-head"><div class="rank-name"><span class="rank-medal">11.</span>gemma-3-27b-it</div><div class="rank-pts low">75 pts</div></div>
-          <div class="rank-scores"><span class="rscore rs-v">Vel 7/10</span><span class="rscore rs-q">Cal 7/10</span><span class="rscore rs-c">Ctx 6/10</span><span class="rscore rs-f">Free 10/10</span></div>
-          <div class="rank-spec">Modelo abierto · Buen rendimiento general</div>
+      </div>
+
+      <div class="sch" style="margin-top:24px;"><div class="stitle">🟢 NVIDIA NIM · Modelos Gratis</div></div>
+      <div class="card mb14">
+        <div class="ch"><div class="ct">80+ modelos gratis vía API NVIDIA</div><span class="badge b-ok">Activo</span></div>
+        <div class="cb">
+          <div class="sys-row">
+            <div class="si"><span class="si-icon">🏆</span><span class="si-lbl">nvidia-build/llama-3.3-70b</span><span class="si-val">Mejor balance calidad/velocidad gratis</span><span class="badge b-ok">Razonamiento</span></div>
+            <div class="si"><span class="si-icon">🏆</span><span class="si-lbl">nvidia-build/dsv4-pro</span><span class="si-val">DeepSeek v4 · Fallback Doc · Razonamiento profundo</span><span class="badge b-ok">128K ctx</span></div>
+            <div class="si"><span class="si-icon">🏆</span><span class="si-lbl">nvidia-build/llama-3.1-70b</span><span class="si-val">Meta · Fallback Doc tier 2 · Versátil</span><span class="badge b-ok">Español</span></div>
+            <div class="si"><span class="si-icon">🏆</span><span class="si-lbl">nvidia-build/llama-3.1-8b</span><span class="si-val">Ultra rápido · Tareas simples</span><span class="badge b-ok">Rápido</span></div>
+            <div class="si"><span class="si-icon">🏆</span><span class="si-lbl">nvidia-build/glm-5.2</span><span class="si-val">GLM · Fallback Diana · Bilingüe</span><span class="badge b-ok">Bueno</span></div>
+          </div>
+          <div style="margin-top:10px;padding:9px 12px;background:rgba(34,208,138,.06);border-radius:8px;font-family:var(--mono);font-size:.72rem;color:var(--muted);">
+            🔑 API key gratuita en NVIDIA GPU Cloud · Sin rate limits restrictivos · 80+ modelos disponibles
+          </div>
         </div>
-        <div class="rank-card">
-          <div class="rank-head"><div class="rank-name"><span class="rank-medal">12.</span>deepseek-chat</div><div class="rank-pts low">74 pts</div></div>
-          <div class="rank-scores"><span class="rscore rs-v">Vel 8/10</span><span class="rscore rs-q">Cal 7/10</span><span class="rscore rs-c">Ctx 9/10</span><span class="rscore rs-f">Free 7/10</span></div>
-          <div class="rank-spec">Chat general DeepSeek · 128K contexto</div>
+      </div>
+
+      <div class="sch" style="margin-top:24px;"><div class="stitle">🧠 Perfiles Hermes auditados</div></div>
+      <div class="card mb14">
+        <div class="ch"><div class="ct">Estado real de perfiles</div><span class="badge b-ok">2026-07-04</span></div>
+        <div class="cb">
+          <div class="sys-row">
+            <div class="si"><span class="si-icon">🧠</span><span class="si-lbl">Perfil default</span><span class="si-val">Valy claude-sonnet-4-6 · Doc gpt-5.5</span><span class="badge b-ok">Auditado</span></div>
+            <div class="si"><span class="si-icon">🔍</span><span class="si-lbl">Holmes</span><span class="si-val">ollama-local/qwen2.5:7b · ChromaDB <span id="dyn-holmes-profile-chunks">108,575</span> chunks</span><span class="badge b-ok">Auditado</span></div>
+            <div class="si"><span class="si-icon">🛠️</span><span class="si-lbl">Diana / Pelusa</span><span class="si-val">claude-sonnet-4 / ollama-local/qwen2.5:7b</span><span class="badge b-info">Mixto</span></div>
+            <div class="si"><span class="si-icon">🔑</span><span class="si-lbl">Secrets</span><span class="si-val">~/.secrets + Keychain</span><span class="badge b-ok">Verificado</span></div>
+          </div>
+          <div style="margin-top:11px;padding:10px;background:rgba(63,147,255,.08);border:1px solid rgba(63,147,255,.18);border-radius:8px;font-size:.74rem;color:var(--muted);line-height:1.6;">
+            Fuente de esta fila: <strong style="color:var(--txt);">config local auditada el 2026-07-04</strong>. Si difiere de notas históricas del dashboard, prima el estado actual de <span class="mono">~/.hermes/config.yaml</span> y perfiles asociados.
+          </div>
         </div>
-        <div class="rank-card">
-          <div class="rank-head"><div class="rank-name"><span class="rank-medal">13.</span>groq/compound-mini</div><div class="rank-pts low">72 pts</div></div>
-          <div class="rank-scores"><span class="rscore rs-v">Vel 9/10</span><span class="rscore rs-q">Cal 6/10</span><span class="rscore rs-c">Ctx 9/10</span><span class="rscore rs-f">Free 8/10</span></div>
-          <div class="rank-spec">Compacto · Rápido · Buen rate limit</div>
-        </div>
-        <div class="rank-card">
-          <div class="rank-head"><div class="rank-name"><span class="rank-medal">14.</span>gemma-4-26b-a4b-it</div><div class="rank-pts low">71 pts</div></div>
-          <div class="rank-scores"><span class="rscore rs-v">Vel 8/10</span><span class="rscore rs-q">Cal 7/10</span><span class="rscore rs-c">Ctx 7/10</span><span class="rscore rs-f">Free 10/10</span></div>
-          <div class="rank-spec">Versión optimizada Gemma 4 · Eficiente</div>
-        </div>
-        <div class="rank-card">
-          <div class="rank-head"><div class="rank-name"><span class="rank-medal">15.</span>gemma-3-12b-it</div><div class="rank-pts low">68 pts</div></div>
-          <div class="rank-scores"><span class="rscore rs-v">Vel 8/10</span><span class="rscore rs-q">Cal 6/10</span><span class="rscore rs-c">Ctx 6/10</span><span class="rscore rs-f">Free 10/10</span></div>
-          <div class="rank-spec">Open weight · Google · OpenRouter free</div>
+      </div>
+
+      <div class="sch" style="margin-top:24px;"><div class="stitle">🔑 Keychain — Gestor de Secrets</div></div>
+      <div class="card mb14">
+        <div class="ch"><div class="ct">macOS Keychain</div><span class="badge b-ok">Activo</span></div>
+        <div class="cb">
+          <div class="sys-row">
+            <div class="si"><span class="si-icon">🔐</span><span class="si-lbl">DeepSeek API Key</span><span class="si-val">Keychain · carga automática</span><span class="badge b-ok">OK</span></div>
+            <div class="si"><span class="si-icon">🔐</span><span class="si-lbl">Groq API Key</span><span class="si-val">Keychain · carga automática</span><span class="badge b-ok">OK</span></div>
+            <div class="si"><span class="si-icon">🔐</span><span class="si-lbl">Telegram Bot Token</span><span class="si-val">Keychain · carga automática</span><span class="badge b-ok">OK</span></div>
+            <div class="si"><span class="si-icon">🔐</span><span class="si-lbl">Google OAuth</span><span class="si-val">Keychain · tokens seguros</span><span class="badge b-ok">OK</span></div>
+            <div class="si"><span class="si-icon">📜</span><span class="si-lbl">Script de carga</span><span class="si-val">~/valy/.scripts/load-secrets.sh</span><span class="badge b-ok">OK</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -1120,36 +1601,30 @@ body.light .foot{background:rgba(255,255,255,.55);}
     <!-- ══════ SECURITY ══════ -->
     <div class="section" id="s-security">
       <div class="sch"><div class="stitle">Estado APIs y Tokens</div></div>
-      <div class="sec-alert err">
-        <div class="sec-alert-icon">🔴</div>
-        <div><div class="sec-alert-lbl">API Key DeepSeek — Rotar</div>
-          <div class="sec-alert-txt">Ir a <strong>platform.deepseek.com</strong> → API Keys → Regenerate. Actualizar en openclaw.json y en ~/.env.secrets</div>
+      <div class="sec-alert ok">
+        <div class="sec-alert-icon">🔐</div>
+        <div><div class="sec-alert-lbl">API Keys en macOS Keychain</div>
+          <div class="sec-alert-txt">✅ Todas las claves migradas a <strong>macOS Keychain</strong> (no en texto plano). Carga automática vía scripts de perfil. Google OAuth también en Keychain.</div>
         </div>
       </div>
       <div class="sec-alert err">
-        <div class="sec-alert-icon">🔴</div>
-        <div><div class="sec-alert-lbl">API Key OpenRouter — Rotar</div>
-          <div class="sec-alert-txt">Ir a <strong>openrouter.ai</strong> → Keys → Regenerate. Actualizar referencia en configuración de Pelusa.</div>
-        </div>
-      </div>
-      <div class="sec-alert err">
-        <div class="sec-alert-icon">🔴</div>
-        <div><div class="sec-alert-lbl">Telegram Bot Token — Revocar</div>
-          <div class="sec-alert-txt"><strong>@BotFather</strong> → /mybots → Valy_bot → API Token → Revoke current token. Actualizar en openclaw.json.</div>
+        <div class="sec-alert-icon">⚠️</div>
+        <div><div class="sec-alert-lbl">Google Drive OAuth — token expirado/revocado</div>
+          <div class="sec-alert-txt">El backup diario de las 03:00 falló el 2026-07-04: <strong>invalid_grant: Token has been expired or revoked</strong>. Se requiere reautenticación manual del token de Google Drive. El script en <code>.hermes/scripts/gdrive-backup.py</code> está intacto.</div>
         </div>
       </div>
       <div class="card mb14" style="margin-top:16px;">
-        <div class="ch"><div class="ct">📁 Archivo .env.secrets (chmod 600)</div></div>
+        <div class="ch"><div class="ct">🔑 Gestión de Secrets vía Keychain</div></div>
         <div class="cb">
           <div class="code-block">
-            <span style="color:var(--muted);"># /home/valy/.env.secrets</span><br>
-            <span style="color:var(--muted);"># chmod 600 ~/.env.secrets</span><br><br>
-            DEEPSEEK_API_KEY=<span style="color:var(--yellow);">sk-nueva-key</span><br>
-            OPENROUTER_API_KEY=<span style="color:var(--yellow);">sk-or-nueva-key</span><br>
-            TELEGRAM_BOT_TOKEN=<span style="color:var(--yellow);">nuevo-token</span>
+            <span style="color:var(--muted);"># macOS Keychain (security)</span><br>
+            <span style="color:var(--muted);"># Carga automática desde ~/.hermes/scripts/load-keys.sh</span><br><br>
+            <span style="color:var(--green);">security find-generic-password -w -a "$USER" -s "deepseek-key"</span><br>
+            <span style="color:var(--green);">security find-generic-password -w -a "$USER" -s "groq-key"</span><br>
+            <span style="color:var(--green);">security find-generic-password -w -a "$USER" -s "telegram-bot-token"</span>
           </div>
           <div style="margin-top:11px;padding:10px;background:rgba(34,208,138,.05);border:1px solid rgba(34,208,138,.18);border-radius:8px;font-size:.77rem;color:var(--muted);line-height:1.6;">
-            ✅ Una key por servicio &nbsp;·&nbsp; ✅ Nunca compartir en chats &nbsp;·&nbsp; ✅ Rotar cada 90 días &nbsp;·&nbsp; ✅ Nunca subir a GitHub
+            ✅ Keychain cifrado por macOS &nbsp;·&nbsp; ✅ Carga automática &nbsp;·&nbsp; ✅ Sin texto plano &nbsp;·&nbsp; ✅ Google OAuth protegido
           </div>
         </div>
       </div>
@@ -1183,7 +1658,7 @@ body.light .foot{background:rgba(255,255,255,.55);}
           <div class="cb">
             <div class="task-section">
               <div class="si"><span class="si-icon">🐾</span><span class="si-lbl">Valy — Identidad</span><span class="badge b-info">✓</span><span class="si-val">SOUL.md, MEMORY.md</span></div>
-              <div class="si"><span class="si-icon">📊</span><span class="si-lbl">Dashboard v2.1</span><span class="badge b-info">✓</span><span class="si-val">Command center HTML</span></div>
+              <div class="si"><span class="si-icon">📊</span><span class="si-lbl">Dashboard v3.0</span><span class="badge b-info">✓</span><span class="si-val">Command center HTML</span></div>
               <div class="si"><span class="si-icon">💾</span><span class="si-lbl">Backup Automático</span><span class="badge b-info">✓</span><span class="si-val">.scripts/backup.py → Drive</span></div>
               <div class="si"><span class="si-icon">📧</span><span class="si-lbl">Gmail Reader</span><span class="badge b-info">✓</span><span class="si-val">.scripts/gmail-reader.py</span></div>
               <div class="si"><span class="si-icon">📤</span><span class="si-lbl">Send Email</span><span class="badge b-info">✓</span><span class="si-val">.scripts/send-email.py</span></div>
@@ -1203,10 +1678,12 @@ body.light .foot{background:rgba(255,255,255,.55);}
         <div class="ch"><span class="ct">🕒 Cron Jobs Activos</span></div>
         <div class="cb">
           <table class="st">
-            <tr><td>03:00 AM</td><td>📦 Backup diario a Drive</td><td><span class="badge b-ok">Pelusa/Groq</span></td></tr>
-            <tr><td>06:30 AM</td><td>📊 Actualizar dashboard</td><td><span class="badge b-ok">Pelusa/Groq</span></td></tr>
-            <tr><td>07:00 AM</td><td>⌚ Fetch Garmin data</td><td><span class="badge b-ok">Directo</span></td></tr>
-            <tr><td>09:00 AM</td><td>📋 Reporte matutino</td><td><span class="badge b-ok">Valy/DeepSeek</span></td></tr>
+            <tr><td>03:00 AM</td><td>📦 Backup diario a Google Drive</td><td><span class="badge" id="dyn-cron-backup-drive">—</span></td></tr>
+            <tr><td>04:00 AM Dom</td><td>🗂️ Backup semanal ChromaDB</td><td><span class="badge" id="dyn-cron-backup-chroma">—</span></td></tr>
+            <tr><td>05:00 AM Lun</td><td>🗓️ Resumen semanal de sesión</td><td><span class="badge" id="dyn-cron-resumen-semanal">—</span></td></tr>
+            <tr><td>06:30 AM</td><td>📊 Actualizar dashboard</td><td><span class="badge" id="dyn-cron-dashboard">—</span></td></tr>
+            <tr><td>09:00 AM</td><td>📋 Reporte matutino a JP</td><td><span class="badge" id="dyn-cron-reporte">—</span></td></tr>
+            <tr><td>02:00 AM Dom</td><td>🔄 Sync ChromaDB Mac → pc.valy</td><td><span class="badge" id="dyn-cron-sync-chromadb-pcvaly">—</span></td></tr>
           </table>
         </div>
       </div>
@@ -1217,7 +1694,7 @@ body.light .foot{background:rgba(255,255,255,.55);}
             <div class="si"><span class="si-icon">📧</span><span class="si-lbl">Gmail — Correos urgentes sin leer</span><span class="badge b-pend">2-3x/día</span></div>
             <div class="si"><span class="si-icon">📅</span><span class="si-lbl">Calendar — Eventos próximos 24-48h</span><span class="badge b-pend">2-3x/día</span></div>
             <div class="si"><span class="si-icon">⚙️</span><span class="si-lbl">Gateway — Estado del sistema</span><span class="badge b-pend">2-3x/día</span></div>
-            <div class="si"><span class="si-icon">📊</span><span class="si-lbl">Dashboard — Servir correctamente</span><span class="badge b-pend">Al arrancar</span></div>
+            <div class="si"><span class="si-icon">📊</span><span class="si-lbl">Dashboard — sin listener (health check falló hoy)</span><span class="badge b-warn">Error</span></div>
             <div class="si"><span class="si-icon">🔄</span><span class="si-lbl">MEMORY.md — Curar recuerdos</span><span class="badge b-pend">Cada ~3 días</span></div>
           </div>
         </div>
@@ -1252,10 +1729,13 @@ body.light .foot{background:rgba(255,255,255,.55);}
       <div class="card mb14">
         <div class="ch"><span class="ct">⚡ Eventos Recientes</span></div>
         <div class="cb">
-          <div class="si"><span class="si-icon">⌚</span><span class="si-lbl">Garmin Descent MK3i conectado</span><span class="badge b-ok">Hoy</span></div>
-          <div class="si"><span class="si-icon">🌙</span><span class="si-lbl">Kimi API añadido a Diana</span><span class="badge b-ok">Hoy</span></div>
-          <div class="si"><span class="si-icon">🎨</span><span class="si-lbl">Diana creada — Qwen3 Coder</span><span class="badge b-ok">Hoy</span></div>
-          <div class="si"><span class="si-icon">🔄</span><span class="si-lbl">Valy fallbacks gratis configurados</span><span class="badge b-ok">Hoy</span></div>
+          <div class="si"><span class="si-icon">📦</span><span class="si-lbl">Backup diario a Drive falló hoy 2026-07-04 03:01 (invalid_grant — token Google expirado)</span><span class="badge b-warn">Hoy</span></div>
+          <div class="si"><span class="si-icon">📊</span><span class="si-lbl">Cron "actualizar dashboard" falló a las 06:30 (script no encontrado en ~/.hermes/scripts/) — CORREGIDO vía symlink</span><span class="badge b-warn">Hoy</span></div>
+          <div class="si"><span class="si-icon">📋</span><span class="si-lbl">Reporte matutino a JP terminó OK a las 09:03</span><span class="badge b-ok">Hoy</span></div>
+          <div class="si"><span class="si-icon">🏥</span><span class="si-lbl">Health check del dashboard: sin listener en puerto 8765</span><span class="badge b-warn">Hoy</span></div>
+          <div class="si"><span class="si-icon">🗓️</span><span class="si-lbl">Resumen semanal terminó OK el 2026-06-29</span><span class="badge b-ok">Lun</span></div>
+          <div class="si"><span class="si-icon">🗄️</span><span class="si-lbl">Backup ChromaDB falló 2026-06-28 (chromadb no encontrado en el entorno del cron)</span><span class="badge b-warn">Semanal</span></div>
+          <div class="si"><span class="si-icon">🔄</span><span class="si-lbl">Sync ChromaDB Mac→pc.valy: nuevo cron agregado, nunca ha corrido</span><span class="badge b-pend">Nuevo</span></div>
         </div>
       </div>
     </div>
@@ -1263,8 +1743,8 @@ body.light .foot{background:rgba(255,255,255,.55);}
 
   </div><!-- /content -->
   <div class="foot">
-    <span>Valy IA · Command Center v2.2</span>
-    <span style="color:var(--cyan);font-family:var(--mono);font-size:.7rem">Actualizado: 2026-05-14 00:06 CLT</span>
+    <span>Valy IA · Command Center v3.0</span>
+    <span style="color:var(--cyan);font-family:var(--mono);font-size:.7rem" id="dyn-timestamp">Actualizado: —</span>
     <span id="clock"></span>
   </div>
 
@@ -1273,11 +1753,12 @@ body.light .foot{background:rgba(255,255,255,.55);}
         <h2>🔬 Research Pipeline</h2>
         <p>Motor de investigaci&oacute;n multi-step para Holmes. Combina RAG (ChromaDB), compromisos estructurados, b&uacute;squeda web y gap analysis.</p>
         <div class="tags"><span class="tag t-cyan">Op1: RAG + Keywords + Compromisos</span><span class="tag t-purple">Op2: + Web Search</span><span class="tag t-green">DuckDuckGo</span></div>
+        <div style="margin-top:11px;padding:10px;background:rgba(63,147,255,.08);border:1px solid rgba(63,147,255,.18);border-radius:8px;font-size:.74rem;color:var(--muted);line-height:1.6;">RAG data refrescada el 2026-07-04 19:52 CLT — ChromaDB con <strong>108,575 chunks</strong> (107,105 cen_docs + 1,470 pert_docs). Datos cargados vía <span class="mono">dashboard-data.js</span>.</div>
       </div></div>
       <div class="g2">
         <div class="card"><div class="ch"><span class="ct">🔄 Op1: RAG + Compromisos</span></div><div class="cb" style="font-size:.82rem;line-height:1.7">
           <div class="sys-row">
-            <div class="si"><span class="si-icon">1.</span><span class="si-lbl">RAG (ChromaDB 28.702 chunks + Groq)</span><span class="badge b-ok">auto</span></div>
+            <div class="si"><span class="si-icon">1.</span><span class="si-lbl">RAG (ChromaDB 108,575 chunks + Groq)</span><span class="badge b-ok">auto</span></div>
             <div class="si"><span class="si-icon">2.</span><span class="si-lbl">Extracci&oacute;n autom&aacute;tica de keywords</span><span class="badge b-ok">auto</span></div>
             <div class="si"><span class="si-icon">3.</span><span class="si-lbl">B&uacute;squeda en 96 compromisos estructurados</span><span class="badge b-ok">auto</span></div>
             <div class="si"><span class="si-icon">4.</span><span class="si-lbl">Fallback si no encuentra resultados</span><span class="badge b-info">auto</span></div>
@@ -1307,10 +1788,149 @@ body.light .foot{background:rgba(255,255,255,.55);}
       </div></div>
      </div>
 
+     <div class="section" id="s-comandos">
+      <div class="hero"><div class="hero-deco"></div><div class="hero-inner">
+        <h2>⌨️ Comandos útiles</h2>
+        <p>Chuleta operativa del ecosistema Valy. Priorizados para <strong>diagnóstico rápido</strong>, <strong>cron</strong>, <strong>gateway</strong>, <strong>RAG</strong> y <strong>archivos</strong>. Cada bloque se puede copiar con un clic.</p>
+        <div class="tags">
+          <span class="tag t-blue">launchd</span>
+          <span class="tag t-green">Hermes CLI</span>
+          <span class="tag t-cyan">RAG</span>
+          <span class="tag t-yellow">logs</span>
+          <span class="tag t-purple">cron</span>
+        </div>
+      </div></div>
+
+      <div class="cmd-grid">
+        <div class="cmd-card">
+          <div class="cmd-head">
+            <div>
+              <div class="cmd-title">🚦 Gateway Hermes</div>
+              <div class="cmd-desc">Comandos canónicos para el daemon real en macOS. Aquí la fuente de verdad es <span class="cmd-inline">launchctl</span>.</div>
+            </div>
+          </div>
+          <div class="cmd-body">
+            <div class="cmd-item">
+              <div class="cmd-item-top"><div class="cmd-label">Estado real del gateway</div><button class="copy-btn" onclick='copyCmd(`sudo launchctl print system/ai.hermes.gateway | grep -E "state|pid"`, this)'>Copiar</button></div>
+              <code class="cmd-code">sudo launchctl print system/ai.hermes.gateway | grep -E "state|pid"</code>
+              <div class="cmd-note">Esperado: <strong>state = running</strong> y un <strong>pid</strong> activo.</div>
+            </div>
+            <div class="cmd-item">
+              <div class="cmd-item-top"><div class="cmd-label">Reiniciar correctamente</div><button class="copy-btn" onclick='copyCmd(`sudo launchctl kickstart -k system/ai.hermes.gateway`, this)'>Copiar</button></div>
+              <code class="cmd-code">sudo launchctl kickstart -k system/ai.hermes.gateway</code>
+              <div class="cmd-note">Úsalo en vez de <span class="cmd-inline">hermes gateway restart</span> para no mezclar LaunchAgent con LaunchDaemon.</div>
+            </div>
+            <div class="cmd-item">
+              <div class="cmd-item-top"><div class="cmd-label">Logs del gateway</div><button class="copy-btn" onclick='copyCmd(`tail -f ~/.hermes/logs/gateway-daemon.error.log`, this)'>Copiar</button></div>
+              <code class="cmd-code">tail -f ~/.hermes/logs/gateway-daemon.error.log</code>
+              <div class="cmd-note">Para seguimiento en vivo de errores o crash loops.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cmd-card">
+          <div class="cmd-head">
+            <div>
+              <div class="cmd-title">⏰ Cron & automatizaciones</div>
+              <div class="cmd-desc">Atajos para ver jobs, filtrar fallos y ejecutar una corrida manual de prueba.</div>
+            </div>
+          </div>
+          <div class="cmd-body">
+            <div class="cmd-item">
+              <div class="cmd-item-top"><div class="cmd-label">Listar todos los cron</div><button class="copy-btn" onclick='copyCmd(`hermes cron list --all`, this)'>Copiar</button></div>
+              <code class="cmd-code">hermes cron list --all</code>
+              <div class="cmd-note">Incluye pausados, activos y jobs con error.</div>
+            </div>
+            <div class="cmd-item">
+              <div class="cmd-item-top"><div class="cmd-label">Ejecutar un job puntual</div><button class="copy-btn" onclick='copyCmd(`hermes cron run JOB_ID`, this)'>Copiar</button></div>
+              <code class="cmd-code">hermes cron run JOB_ID</code>
+              <div class="cmd-note">Reemplaza <span class="cmd-inline">JOB_ID</span> por el ID real del job que quieras probar.</div>
+            </div>
+            <div class="cmd-item">
+              <div class="cmd-item-top"><div class="cmd-label">Leer jobs.json</div><button class="copy-btn" onclick='copyCmd(`cat ~/.hermes/cron/jobs.json`, this)'>Copiar</button></div>
+              <code class="cmd-code">cat ~/.hermes/cron/jobs.json</code>
+              <div class="cmd-note">Útil para inspección rápida de provider/model, schedule y último error.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cmd-card">
+          <div class="cmd-head">
+            <div>
+              <div class="cmd-title">🕵️ Holmes RAG</div>
+              <div class="cmd-desc">Comandos de salud y consulta del índice ambiental local.</div>
+            </div>
+          </div>
+          <div class="cmd-body">
+            <div class="cmd-item">
+              <div class="cmd-item-top"><div class="cmd-label">Estado del puente RAG</div><button class="copy-btn" onclick='copyCmd(`python3 ~/scripts/holmes-bridge.py --status`, this)'>Copiar</button></div>
+              <code class="cmd-code">python3 ~/scripts/holmes-bridge.py --status</code>
+              <div class="cmd-note">Chequea chunks, compromisos y RCAs indexadas.</div>
+            </div>
+            <div class="cmd-item">
+              <div class="cmd-item-top"><div class="cmd-label">Consulta markdown</div><button class="copy-btn" onclick='copyCmd(`python3 ~/scripts/holmes-bridge.py --format markdown "compromisos zona saturada"`, this)'>Copiar</button></div>
+              <code class="cmd-code">python3 ~/scripts/holmes-bridge.py --format markdown "compromisos zona saturada"</code>
+              <div class="cmd-note">Entrega una respuesta más cómoda para copiar a informes o Telegram.</div>
+            </div>
+            <div class="cmd-item">
+              <div class="cmd-item-top"><div class="cmd-label">Buscar compromisos estructurados</div><button class="copy-btn" onclick='copyCmd(`python3 ~/scripts/holmes-bridge.py --compromisos "dry fog"`, this)'>Copiar</button></div>
+              <code class="cmd-code">python3 ~/scripts/holmes-bridge.py --compromisos "dry fog"</code>
+              <div class="cmd-note">Filtra directo sobre los 96 compromisos estructurados.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cmd-card">
+          <div class="cmd-head">
+            <div>
+              <div class="cmd-title">🖥️ Salud del Mac Mini</div>
+              <div class="cmd-desc">Atajos para mirar memoria, swap y procesos pesados cuando algo se siente lento.</div>
+            </div>
+          </div>
+          <div class="cmd-body">
+            <div class="cmd-item">
+              <div class="cmd-item-top"><div class="cmd-label">Swap actual</div><button class="copy-btn" onclick='copyCmd(`sysctl vm.swapusage`, this)'>Copiar</button></div>
+              <code class="cmd-code">sysctl vm.swapusage</code>
+              <div class="cmd-note">Si el valor usado despega, hay presión real de memoria.</div>
+            </div>
+            <div class="cmd-item">
+              <div class="cmd-item-top"><div class="cmd-label">Top procesos</div><button class="copy-btn" onclick='copyCmd(`ps aux | sort -rk 3,3 | head -15`, this)'>Copiar</button></div>
+              <code class="cmd-code">ps aux | sort -rk 3,3 | head -15</code>
+              <div class="cmd-note">Ordena por uso de CPU para encontrar el culpable más rápido.</div>
+            </div>
+            <div class="cmd-item">
+              <div class="cmd-item-top"><div class="cmd-label">Espacio libre</div><button class="copy-btn" onclick='copyCmd(`df -h / /Users/valy`, this)'>Copiar</button></div>
+              <code class="cmd-code">df -h / /Users/valy</code>
+              <div class="cmd-note">Útil antes de backups, ChromaDB o exportes grandes.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmd-card mb14">
+        <div class="cmd-head">
+          <div>
+            <div class="cmd-title">📁 Rutas clave del entorno</div>
+            <div class="cmd-desc">Las carpetas que más conviene tener a mano en este Mac.</div>
+          </div>
+        </div>
+        <div class="cb">
+          <div class="g2" style="margin-bottom:0;">
+            <div class="kv"><span class="k">Hermes home</span><span class="v mono">~/.hermes/</span></div>
+            <div class="kv"><span class="k">Dashboard local</span><span class="v mono">~/valy/seia-dashboard-v3.html</span></div>
+            <div class="kv"><span class="k">Scripts</span><span class="v mono">~/scripts/</span></div>
+            <div class="kv"><span class="k">Expedientes</span><span class="v mono">~/expedientes/</span></div>
+            <div class="kv"><span class="k">ChromaDB</span><span class="v mono">~/.hermes/chroma_db/</span></div>
+            <div class="kv"><span class="k">Logs Hermes</span><span class="v mono">~/.hermes/logs/</span></div>
+          </div>
+        </div>
+      </div>
+     </div>
+
      <div class="section" id="s-enlaces">
       <div class="hero"><div class="hero-deco"></div><div class="hero-inner">
         <h2>🔗 Enlaces y Acceso R&aacute;pido</h2>
-        <p>Todos los v&iacute;nculos activos del ecosistema Valy IA.</p><div style="margin-top:8px;font-family:var(--mono);font-size:.7rem;color:var(--cyan)">Última verificación: 2026-05-14 00:06 CLT · 9/9 links OK</div>
+        <p>Enlaces del ecosistema Valy IA. Los recursos locales y el estado del backup fueron revalidados en esta revisión; los enlaces web externos siguen pendientes de chequeo manual.</p><div style="margin-top:8px;font-family:var(--mono);font-size:.7rem;color:var(--cyan)">Última verificación local: 2026-07-04 19:53 CLT · enlace local 8765 sin listener · backup Drive requiere reautenticación</div>
       </div></div>
       <div class="card mb14"><div class="ch"><span class="ct">🌐 Web Hosting (valy-ia.1web.cl)</span></div><div class="cb">
         <div class="int-grid">
@@ -1320,11 +1940,9 @@ body.light .foot{background:rgba(255,255,255,.55);}
           <a href="http://valy-ia.1web.cl/valy/cen-dashboard.html" target="_blank" class="int-item"><span class="int-icon">📋</span><span class="int-name">CEN Dashboard</span><span class="int-ok">AmbientBot</span></a>
         </div>
       </div></div>
-      <div class="card mb14"><div class="ch"><span class="ct">🔧 Local (pc.valy)</span></div><div class="cb">
+      <div class="card mb14"><div class="ch"><span class="ct">🔧 Local (Mac Mini M2)</span></div><div class="cb">
         <div class="int-grid">
-          <a href="http://192.168.1.28:8765/" target="_blank" class="int-item"><span class="int-icon">📊</span><span class="int-name">Dashboard Local</span><span class="int-ok">activo</span></a>
-          <a href="http://192.168.1.28:18789/" target="_blank" class="int-item"><span class="int-icon">🤖</span><span class="int-name">OpenClaw Web UI</span><span class="int-ok">control</span></a>
-          <a href="http://192.168.1.28:8766/" target="_blank" class="int-item"><span class="int-icon">🌿</span><span class="int-name">AmbientBot API</span><span class="int-ok">backend</span></a>
+          <a href="http://192.168.1.23:8765/" target="_blank" class="int-item"><span class="int-icon">📊</span><span class="int-name">Dashboard Local</span><span class="int-ok">sin listener</span></a>
         </div>
       </div></div>
       <div class="card mb14"><div class="ch"><span class="ct">📄 Reportes y Archivos</span></div><div class="cb">
@@ -1333,7 +1951,7 @@ body.light .foot{background:rgba(255,255,255,.55);}
           <a href="http://valy-ia.1web.cl/valy/reporte-exigencias-ambientales.pdf" target="_blank" class="int-item"><span class="int-icon">📕</span><span class="int-name">PDF Exigencias</span><span class="int-ok">3 p&aacute;gs</span></a>
           <a href="http://valy-ia.1web.cl/valy/reporte-mantencion-concentradora.pdf" target="_blank" class="int-item"><span class="int-icon">🏭</span><span class="int-name">PDF Mantenci&oacute;n</span><span class="int-ok">5 p&aacute;gs</span></a>
           <a href="http://valy-ia.1web.cl/valy/Reporte_Piscinas_PLS_Tesoro.pdf" target="_blank" class="int-item"><span class="int-icon">💧</span><span class="int-name">PDF Piscinas PLS</span><span class="int-ok">5 p&aacute;gs</span></a>
-          <a href="https://drive.google.com/file/d/13fkOh5DkNF2x-UHYJgOaHY64tN_uaOjb/view" target="_blank" class="int-item"><span class="int-icon">☁️</span><span class="int-name">Backups Drive</span><span class="int-ok">diario</span></a>
+          <a href="https://drive.google.com/file/d/13fkOh5DkNF2x-UHYJgOaHY64tN_uaOjb/view" target="_blank" class="int-item"><span class="int-icon">☁️</span><span class="int-name">Backups Drive</span><span class="int-ok">último backup OK</span></a>
         </div>
       </div></div>
      </div>
@@ -1345,10 +1963,12 @@ body.light .foot{background:rgba(255,255,255,.55);}
 // ─── NAV ───
 const PAGES={
   overview:{t:"Overview",s:"Ecosistema Valy IA · Estado general"},
-  agents:{t:"Agentes IA",s:"Valy · Pelusa · Diana · Maton · Holmes"},
-  infra:{t:"Infraestructura",s:"pc.valy · ZBook · Integraciones"},
+  agents:{t:"Agentes IA",s:"Valy · Holmes · Diana · Pelusa · Doc"},
+  infra:{t:"Infraestructura",s:"Mac Mini M2 · Servidor Local"},
+  comandos:{t:"Comandos útiles",s:"Chuleta operativa para gateway, cron, RAG y diagnóstico"},
   skills:{t:"Skills",s:"Habilidades instaladas y personalizadas"},
   tasks:{t:"Tareas",s:"Gestión de pendientes con bitácora expandible"},
+  rag:{t:"Holmes RAG",s:"Consultas y métricas del sistema RAG"},
   projects:{t:"Proyectos",s:"Iniciativas del ecosistema Valy IA"},
   periodic:{t:"Tareas Periódicas",s:"Cron · Heartbeat · Mantención"},
   api:{t:"API & Modelos",s:"Costos DeepSeek · Ranking Top 15"},
@@ -1369,6 +1989,24 @@ function switchSection(id) {
   nav(id, document.querySelector('.nav-item[data-section="'+id+'"], .mnav-item[data-section="'+id+'"]'));
 }
 
+async function copyCmd(text, btn) {
+  try {
+    await navigator.clipboard.writeText(text);
+    if(btn){
+      const old=btn.textContent;
+      btn.textContent='Copiado';
+      setTimeout(()=>btn.textContent=old,1200);
+    }
+  } catch (err) {
+    if(btn){
+      const old=btn.textContent;
+      btn.textContent='Falló';
+      setTimeout(()=>btn.textContent=old,1200);
+    }
+    console.error('No se pudo copiar el comando', err);
+  }
+}
+
 // ─── THEME ───
 function toggleTheme(){
   const b=document.body;b.classList.toggle("light");
@@ -1386,50 +2024,29 @@ function toggleTheme(){
 
 // ─── TASKS ───
 let TASKS=[
-  {id:1,name:"Rotar API Key DeepSeek",pri:"alta",done:false,date:"2026-05-04",
+  {id:1,name:"Conseguir credenciales hosting dashboard SEIA",pri:"alta",done:false,date:"2026-07-04",
     log:[
-      {t:"2026-05-04 00:00",ic:"🔴",tx:"API key potencialmente comprometida. Prioridad máxima."},
-      {t:"2026-05-04 08:00",ic:"ℹ️",tx:"URL: <span class=\"mono\">platform.deepseek.com</span> → API Keys → Regenerate. Actualizar en <span class=\"mono\">openclaw.json</span> y <span class=\"mono\">~/.env.secrets</span>."}
+      {t:"2026-07-04 19:53",ic:"📋",tx:"Se requiere acceso cPanel/FTP/SSH del hosting valy-ia.1web.cl para subir la versión v3 del dashboard."}
     ]},
-  {id:2,name:"Revocar token Telegram @Valy_bot",pri:"alta",done:false,date:"2026-05-04",
+  {id:2,name:"Resubir dashboard v3 a cPanel (LiteSpeed cache)",pri:"alta",done:false,date:"2026-07-04",
     log:[
-      {t:"2026-05-04 00:00",ic:"🔴",tx:"Token de bot expuesto. Debe revocarse en @BotFather."},
-      {t:"2026-05-04 08:00",ic:"ℹ️",tx:"Pasos: <span class=\"mono\">/mybots → Valy_bot → API Token → Revoke</span>. Luego actualizar openclaw.json."}
+      {t:"2026-07-04 19:53",ic:"📋",tx:"Una vez teniendo credenciales, subir seia-dashboard-v3.html con configuración de caché LiteSpeed para rendimiento óptimo."}
     ]},
-  {id:3,name:"Implementar .env.secrets (chmod 600)",pri:"alta",done:false,date:"2026-05-04",
+  {id:3,name:"Configurar Cloudflare Tunnel para dashboard local",pri:"alta",done:false,date:"2026-07-04",
     log:[
-      {t:"2026-05-04 08:00",ic:"📋",tx:"Crear <span class=\"mono\">/home/valy/.env.secrets</span> con todas las keys."},
-      {t:"2026-05-04 08:00",ic:"ℹ️",tx:"Comando: <span class=\"mono\">touch ~/.env.secrets && chmod 600 ~/.env.secrets</span>"}
+      {t:"2026-07-04 19:53",ic:"📋",tx:"Exponer el dashboard local del Mac Mini (puerto 8765) vía Cloudflare Tunnel en vez de cPanel para acceso seguro desde cualquier lugar."}
     ]},
-  {id:4,name:"Instalar Tailscale VPN",pri:"media",done:false,date:"2026-05-04",
+  {id:4,name:"Instalar Tailscale VPN M2 + iPad",pri:"media",done:false,date:"2026-07-04",
     log:[
-      {t:"2026-05-04 08:00",ic:"📋",tx:"Instalar en pc.valy, iPad y ZBook. Habilita SSH desde cualquier red (faena, viajes)."},
-      {t:"2026-05-04 09:00",ic:"ℹ️",tx:"Doc: <span class=\"mono\">tailscale.com/download/linux</span>. Crear cuenta y vincular dispositivos."}
+      {t:"2026-07-04 19:53",ic:"📋",tx:"Configurar Tailscale en Mac Mini M2 y iPad de JP para acceso remoto seguro a la red local (SSH, ChromaDB, dashboard local)."}
     ]},
-  {id:5,name:"Instalar Ollama (llama3.2:3b)",pri:"media",done:false,date:"2026-05-04",
+  {id:5,name:"Revisar agente Centinela propuesta",pri:"media",done:false,date:"2026-07-04",
     log:[
-      {t:"2026-05-04 08:00",ic:"📋",tx:"Modelo local para operar sin consumo de API keys. RAM 3.7GB → usar llama3.2:3b o 1b."},
-      {t:"2026-05-04 09:00",ic:"ℹ️",tx:"<span class=\"mono\">curl -fsSL https://ollama.ai/install.sh | sh</span> → <span class=\"mono\">ollama pull llama3.2:3b</span>"}
+      {t:"2026-07-04 19:53",ic:"📋",tx:"Evaluar propuesta de nuevo agente especializado en seguimiento de compromisos ambientales de Minera Centinela. Definir alcance y modelo base."}
     ]},
-  {id:6,name:"Instalar OpenCode.ai",pri:"media",done:false,date:"2026-05-04",
+  {id:6,name:"Instalar OpenCode.ai en M2",pri:"baja",done:false,date:"2026-07-04",
     log:[
-      {t:"2026-05-04 08:00",ic:"📋",tx:"Agente de coding IA para tareas de desarrollo en pc.valy."},
-    ]},
-  {id:7,name:"Configurar modelo fallback Valy",pri:"media",done:false,date:"2026-05-04",
-    log:[
-      {t:"2026-05-04 08:00",ic:"📋",tx:"Cuando DeepSeek esté lento, Valy debe hacer fallback automático. Candidatos: Gemini 2.5 · Qwen 32b."},
-    ]},
-  {id:8,name:"Activar skills automáticas",pri:"media",done:false,date:"2026-05-04",
-    log:[
-      {t:"2026-05-04 08:00",ic:"📋",tx:"Inbox reader listo. Activar skills automáticas en el agente Valy."},
-    ]},
-  {id:9,name:"Activar notificaciones / alertas automáticas",pri:"baja",done:false,date:"2026-05-04",
-    log:[
-      {t:"2026-05-04 08:00",ic:"📋",tx:"Configurar alertas automáticas vía Telegram para eventos del sistema y tareas programadas."},
-    ]},
-  {id:10,name:"Instalar Node.js 24 en pc.valy",pri:"baja",done:false,date:"2026-05-04",
-    log:[
-      {t:"2026-05-04 08:00",ic:"📋",tx:"Prerrequisito para Claude Code y otros tools npm. Usar nvm o NodeSource."},
+      {t:"2026-07-04 19:53",ic:"📋",tx:"Agente de coding IA para el Mac Mini. Verificar compatibilidad con macOS 26.5.1 y Apple Silicon."}
     ]},
 ];
 
@@ -1549,6 +2166,73 @@ function saveApiData(){
 // ─── INIT ───
 renderTasks();
 renderProjs();
+updateBadges();
+
+function updateBadges() {
+  document.getElementById('nb-rag').textContent = '0';
+  document.getElementById('nb-seia').textContent = '36';
+}
+
+// SEIA Functions — static data loaded
+function loadSEIA(){ /* Datos estáticos — todo en HTML */ }
+function refreshSEIA(){ loadSEIA(); }
+
+// ── Datos dinámicos desde dashboard-data.js ──────────────────────────────────
+function loadDynData(){
+  const d = window.DASHBOARD_DATA;
+  if(!d) return;
+  const set = (id, val) => { const el=document.getElementById(id); if(el) el.textContent=val; };
+  const fmt = n => n.toLocaleString('es-CL');
+
+  // ChromaDB
+  const total = d.chroma.total;
+  set('dyn-chroma-tag', `🔍 ChromaDB ${fmt(total)} chunks`);
+  set('dyn-cen-chunks', `${fmt(d.chroma.cen_docs)} chunks`);
+  set('dyn-pert-chunks', `${fmt(d.chroma.pert_docs)} chunks`);
+  set('dyn-pert-total', fmt(d.chroma.pert_docs));
+  set('dyn-pert-inline', `${fmt(d.chroma.pert_docs)} chunks`);
+  set('dyn-chroma-infra', `${fmt(total)} chunks`);
+  set('dyn-chroma-infra-storage', `${fmt(total)} chunks documentales`);
+  set('dyn-holmes-chunks-inline', `${fmt(total)}+`);
+  set('dyn-holmes-chunks-v3', fmt(total));
+  set('dyn-holmes-chunks-val', fmt(total));
+  set('dyn-holmes-profile-chunks', fmt(total));
+
+  // RAG stats
+  set('dyn-rcas-count', d.rag.rcas);
+  set('dyn-snifa-count', d.rag.snifa);
+  set('dyn-rag-indexed', fmt(d.chroma.cen_docs));
+  set('dyn-rag-perts', fmt(d.chroma.pert_docs));
+  set('dyn-rag-docs', fmt(d.srca_count));
+
+  // Timestamp
+  set('dyn-timestamp', `Actualizado: ${d.updated} CLT`);
+
+  // Crons
+  const cronMap = {
+    'backup-drive':'dyn-cron-backup-drive',
+    'backup-chroma':'dyn-cron-backup-chroma',
+    'resumen-semanal':'dyn-cron-resumen-semanal',
+    'dashboard':'dyn-cron-dashboard',
+    'reporte':'dyn-cron-reporte',
+    'sync-chromadb-pcvaly':'dyn-cron-sync-chromadb-pcvaly',
+  };
+  for(const [key, elId] of Object.entries(cronMap)){
+    const el = document.getElementById(elId);
+    if(!el || !d.crons[key]) continue;
+    const c = d.crons[key];
+    el.textContent = `${c.status} · ${c.date}`;
+    el.className = `badge ${c.badge}`;
+  }
+}
+
+function refreshRagMetrics(){ loadDynData(); }
+
+window.addEventListener('DOMContentLoaded',()=>{
+  loadDynData();
+  setInterval(loadDynData, 300000); // re-carga si el JS se actualizó
+});
+
 </script>
 </body>
 </html>
