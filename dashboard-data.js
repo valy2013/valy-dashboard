@@ -1,4 +1,5 @@
-// Generado automáticamente por dashboard-update-data.py — no editar a mano\nwindow.DASHBOARD_DATA = {
+// Generado automáticamente por dashboard-update-data.py — no editar a mano
+window.DASHBOARD_DATA = {
   "updated": "2026-07-09 19:53",
   "chroma": {
     "total": 108575,
@@ -43,4 +44,4 @@
       "badge": "b-warn"
     }
   }
-};\n
+};
