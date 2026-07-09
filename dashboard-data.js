@@ -1,6 +1,5 @@
-// Generado automáticamente por dashboard-update-data.py — no editar a mano
-window.DASHBOARD_DATA = {
-  "updated": "2026-07-04 20:31",
+// Generado automáticamente por dashboard-update-data.py — no editar a mano\nwindow.DASHBOARD_DATA = {
+  "updated": "2026-07-09 19:53",
   "chroma": {
     "total": 108575,
     "cen_docs": 107105,
@@ -14,34 +13,34 @@ window.DASHBOARD_DATA = {
   "srca_count": 588,
   "crons": {
     "backup-drive": {
-      "status": "error",
-      "date": "2026-07-04",
-      "badge": "b-warn"
+      "status": "ok",
+      "date": "2026-07-09",
+      "badge": "b-ok"
     },
     "backup-chroma": {
-      "status": "error",
-      "date": "2026-06-28",
-      "badge": "b-warn"
+      "status": "ok",
+      "date": "2026-07-05",
+      "badge": "b-ok"
     },
     "resumen-semanal": {
       "status": "ok",
-      "date": "2026-06-29",
+      "date": "2026-07-06",
       "badge": "b-ok"
     },
     "dashboard": {
-      "status": "error",
-      "date": "2026-07-04",
-      "badge": "b-warn"
+      "status": "ok",
+      "date": "2026-07-09",
+      "badge": "b-ok"
     },
     "reporte": {
       "status": "ok",
-      "date": "2026-07-04",
+      "date": "2026-07-09",
       "badge": "b-ok"
     },
     "sync-chromadb-pcvaly": {
-      "status": null,
-      "date": "nunca",
+      "status": "error",
+      "date": "2026-07-05",
       "badge": "b-warn"
     }
   }
-};
+};\n
