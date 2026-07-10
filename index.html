@@ -586,7 +586,7 @@ body.light .cmd-code{background:#eef6ff;color:#005f8f;}
         <div class="hero-inner">
           <h2>🐾 Valy IA · Agente Personal Autónomo</h2>
           <p>Ecosistema de inteligencia artificial sobre <strong>Mac Mini M2</strong> (Apple Silicon), auditado contra el sistema real el <strong>2026-07-04</strong>.
-          Cinco asistentes — <strong>Valy</strong> (claude-sonnet-4-6 · Anthropic · principal), <strong>Holmes</strong> (ollama-local/qwen2.5:7b · Local · RAG compliance),
+          Seis asistentes — <strong>Valy</strong> (claude-sonnet-4-6 · Anthropic · principal), <strong>Holmes</strong> (ollama-local/qwen2.5:7b · Local · RAG compliance),
           <strong>Diana</strong> (claude-sonnet-4 · Anthropic · diseño visual), <strong>Pelusa</strong> (ollama-local/qwen2.5:7b · Local · sandbox) y
           <strong>Doc</strong> (gpt-5.5 · OpenAI Codex · QAQC documental) — con Telegram operativo, Ollama local para embeddings y ChromaDB como base documental.</p>
           <div class="tags">
@@ -604,8 +604,8 @@ body.light .cmd-code{background:#eef6ff;color:#005f8f;}
         <div class="kpi">
           <div class="kpi-icon">🤖</div>
           <div class="kpi-lbl">Agentes Activos</div>
-          <div class="kpi-val c-green">5</div>
-          <div class="kpi-hint">Valy · Holmes · Diana · Pelusa · Doc</div>
+          <div class="kpi-val c-green">6</div>
+          <div class="kpi-hint">Valy · Holmes · Diana · Pelusa · Doc · ValyCen</div>
         </div>
         <div class="kpi">
           <div class="kpi-icon">🔌</div>
@@ -679,7 +679,7 @@ body.light .cmd-code{background:#eef6ff;color:#005f8f;}
                 <div class="a-model" style="font-size:.65rem;">claude-sonnet-4-6 (Anthropic) <span class="badge b-ok" style="font-size:.55rem;">🧠 Anthropic</span><br><span style="font-size:.6rem;color:var(--muted);">↳ fallback: nvidia-build/deepseek-v4-flash → deepseek/deepseek-v4-flash</span></div>
                 <div class="a-status on"><div class="dot"></div>Online</div>
                 <div class="a-meta" style="font-size:.7rem;line-height:1.4;color:var(--txt);margin-top:4px;">
-                  🧠 El cerebro del ecosistema. Coordina 5 agentes IA, gestiona memoria a largo plazo, automatiza tareas con cron y te responde por Telegram al instante.
+                  🧠 El cerebro del ecosistema. Coordina 6 agentes IA, gestiona memoria a largo plazo, automatiza tareas con cron y te responde por Telegram al instante.
                 </div>
               </div>
             </div>
@@ -776,7 +776,7 @@ body.light .cmd-code{background:#eef6ff;color:#005f8f;}
       <!-- Section header -->
       <div class="sch" style="margin-bottom:16px;">
         <div class="stitle" style="font-size:.85rem;">🤖 Agentes IA · Ecosistema</div>
-        <span class="badge b-ok" style="font-size:.72rem;padding:3px 10px;">5 agentes · Online</span>
+        <span class="badge b-ok" style="font-size:.72rem;padding:3px 10px;">6 agentes · Online</span>
       </div>
 
       <!-- v3: 2×3 Glassmorphism Grid -->
@@ -1025,13 +1025,28 @@ body.light .cmd-code{background:#eef6ff;color:#005f8f;}
           </div>
         </div>
 
-        <!-- Próximos Agentes (placeholder) -->
-        <div class="v3-card v3-pending">
+        <!-- 🤖 ValyCen (pc.valy) -->
+        <div class="v3-card" style="--card-glow:var(--card-glow,rgba(234,67,53,.2));">
+          <div class="v3-topbar" style="background:linear-gradient(135deg,#ea4335,#fbbc04);"></div>
           <div class="v3-body">
-            <div style="color:var(--muted2);">
-              <div style="font-size:2.2rem;margin-bottom:10px;">🚀</div>
-              <div style="font-weight:700;font-size:.88rem;color:var(--muted);">Próximos Agentes</div>
-              <div style="font-size:.7rem;margin-top:5px;">OpenCode.ai · + más</div>
+            <div>
+              <div class="v3-head">
+                <div class="v3-avatar" style="background:rgba(234,67,53,.12);border-color:rgba(234,67,53,.3);box-shadow:0 0 20px rgba(234,67,53,.25);">🤖<div class="v3-dot"></div></div>
+                <div class="v3-info">
+                  <div class="v3-name">ValyCen</div>
+                  <div class="v3-role">Equipo Centinela · pc.valy</div>
+                </div>
+              </div>
+              <div class="v3-model"><span class="v3-model-name">openai/gpt-5.4-mini</span><span class="v3-provider cloud" style="color:var(--blue2);border-color:rgba(63,147,255,.25);background:rgba(63,147,255,.08);">🧠 OpenAI Codex</span><span style="font-size:.52rem;color:var(--muted);margin-left:auto;white-space:nowrap;">↳ ollama-local/llama3.2:3b 🖥️ LAN</span></div>
+              <div class="v3-metrics">
+                <div class="v3-m"><div class="v3-m-lbl">Servicio</div><div class="v3-m-val c-green" id="dyn-valycen-status">active</div></div>
+                <div class="v3-m"><div class="v3-m-lbl">RAM</div><div class="v3-m-val c-blue" id="dyn-valycen-ram">351 MB</div></div>
+                <div class="v3-m"><div class="v3-m-lbl">Chroma pc.valy</div><div class="v3-m-val c-purple" id="dyn-valycen-chroma">115,918</div></div>
+              </div>
+            </div>
+            <div class="v3-foot">
+              <div class="v3-status"><div class="dot" id="dyn-valycen-dot" style="background:var(--green);"></div><span id="dyn-valycen-label">Online</span></div>
+              <span class="v3-badge" style="color:#ea4335;border-color:rgba(234,67,53,.3);background:rgba(234,67,53,.1);">Service</span>
             </div>
           </div>
         </div>
@@ -1963,7 +1978,7 @@ body.light .cmd-code{background:#eef6ff;color:#005f8f;}
 // ─── NAV ───
 const PAGES={
   overview:{t:"Overview",s:"Ecosistema Valy IA · Estado general"},
-  agents:{t:"Agentes IA",s:"Valy · Holmes · Diana · Pelusa · Doc"},
+  agents:{t:"Agentes IA",s:"Valy · Holmes · Diana · Pelusa · Doc · ValyCen"},
   infra:{t:"Infraestructura",s:"Mac Mini M2 · Servidor Local"},
   comandos:{t:"Comandos útiles",s:"Chuleta operativa para gateway, cron, RAG y diagnóstico"},
   skills:{t:"Skills",s:"Habilidades instaladas y personalizadas"},
@@ -2197,6 +2212,27 @@ function loadDynData(){
   set('dyn-holmes-chunks-v3', fmt(total));
   set('dyn-holmes-chunks-val', fmt(total));
   set('dyn-holmes-profile-chunks', fmt(total));
+
+  // pc.valy / ValyCen
+  if (d.pcvaly) {
+    const p = d.pcvaly;
+    const svc = p.valycen_service;
+    set('dyn-valycen-status', svc);
+    set('dyn-valycen-ram', p.ram_mb ? `${p.ram_mb} MB` : '—');
+    const pcChroma = (p.chroma?.cen_docs || 0);
+    set('dyn-valycen-chroma', fmt(pcChroma));
+    const dotEl = document.getElementById('dyn-valycen-dot');
+    const labelEl = document.getElementById('dyn-valycen-label');
+    if (dotEl && labelEl) {
+      if (svc === 'active') {
+        dotEl.style.background = 'var(--green)';
+        labelEl.textContent = 'Online';
+      } else {
+        dotEl.style.background = 'var(--red)';
+        labelEl.textContent = 'Offline';
+      }
+    }
+  }
 
   // RAG stats
   set('dyn-rcas-count', d.rag.rcas);

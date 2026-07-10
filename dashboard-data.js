@@ -1,6 +1,6 @@
 // Generado automáticamente por dashboard-update-data.py — no editar a mano
 window.DASHBOARD_DATA = {
-  "updated": "2026-07-10 17:09",
+  "updated": "2026-07-10 17:14",
   "chroma": {
     "total": 108575,
     "cen_docs": 107105,
