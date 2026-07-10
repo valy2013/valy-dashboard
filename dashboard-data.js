@@ -1,6 +1,6 @@
 // Generado automáticamente por dashboard-update-data.py — no editar a mano
 window.DASHBOARD_DATA = {
-  "updated": "2026-07-10 06:30",
+  "updated": "2026-07-10 13:01",
   "chroma": {
     "total": 108575,
     "cen_docs": 107105,
@@ -30,12 +30,12 @@ window.DASHBOARD_DATA = {
     },
     "dashboard": {
       "status": "ok",
-      "date": "2026-07-09",
+      "date": "2026-07-10",
       "badge": "b-ok"
     },
     "reporte": {
       "status": "ok",
-      "date": "2026-07-09",
+      "date": "2026-07-10",
       "badge": "b-ok"
     },
     "sync-chromadb-pcvaly": {
@@ -43,5 +43,19 @@ window.DASHBOARD_DATA = {
       "date": "2026-07-05",
       "badge": "b-warn"
     }
+  },
+  "pcvaly": {
+    "valycen_service": "active",
+    "model": {
+      "primary": "openai/gpt-5.4-mini",
+      "fallbacks": [
+        "ollama-local/llama3.2:3b"
+      ]
+    },
+    "chroma": {
+      "cen_docs": 115918,
+      "pert_docs": 1485
+    },
+    "ram_mb": 351
   }
 };
