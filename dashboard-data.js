@@ -1,6 +1,6 @@
 // Generado automáticamente por dashboard-update-data.py — no editar a mano
 window.DASHBOARD_DATA = {
-  "updated": "2026-07-11 06:30",
+  "updated": "2026-07-11 17:39",
   "chroma": {
     "total": 108575,
     "cen_docs": 107105,
@@ -30,12 +30,12 @@ window.DASHBOARD_DATA = {
     },
     "dashboard": {
       "status": "ok",
-      "date": "2026-07-10",
+      "date": "2026-07-11",
       "badge": "b-ok"
     },
     "reporte": {
       "status": "ok",
-      "date": "2026-07-10",
+      "date": "2026-07-11",
       "badge": "b-ok"
     },
     "sync-chromadb-pcvaly": {
