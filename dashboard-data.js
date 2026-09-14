@@ -1,6 +1,6 @@
 // Generado automáticamente por dashboard-update-data.py — no editar a mano
 window.DASHBOARD_DATA = {
-  "updated": "2026-09-13 06:30",
+  "updated": "2026-09-14 06:30",
   "chroma": {
     "total": 108575,
     "cen_docs": 107105,
@@ -15,7 +15,7 @@ window.DASHBOARD_DATA = {
   "crons": {
     "backup-drive": {
       "status": "error",
-      "date": "2026-09-13",
+      "date": "2026-09-14",
       "badge": "b-warn"
     },
     "backup-chroma": {
@@ -24,18 +24,18 @@ window.DASHBOARD_DATA = {
       "badge": "b-ok"
     },
     "resumen-semanal": {
-      "status": "ok",
-      "date": "2026-09-07",
-      "badge": "b-ok"
+      "status": "error",
+      "date": "2026-09-14",
+      "badge": "b-warn"
     },
     "dashboard": {
       "status": "ok",
-      "date": "2026-09-12",
+      "date": "2026-09-13",
       "badge": "b-ok"
     },
     "reporte": {
       "status": "error",
-      "date": "2026-09-12",
+      "date": "2026-09-13",
       "badge": "b-warn"
     },
     "sync-chromadb-pcvaly": {
@@ -56,6 +56,6 @@ window.DASHBOARD_DATA = {
       "cen_docs": 115918,
       "pert_docs": 1485
     },
-    "ram_mb": 456
+    "ram_mb": 457
   }
 };
